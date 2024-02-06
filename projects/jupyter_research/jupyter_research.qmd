@@ -1,0 +1,17 @@
+---
+title: "Public GitHub Notebook Corpus Research"
+author: "Jenna Landy"
+date: "9/1/2019"
+---
+
+This was my independent research project as a data science intern at Amazon Web Services (AWS) in 2019. This work is [available on Project Jupyter's GitHub](https://github.com/jupyter/notebook-research).
+
+The goal of this project was to collect and analyze all public Jupyter Notebooks on GitHub ([nearly 5 million](https://github.com/parente/nbestimate/blob/master/estimate.ipynb) at the time of this analyses in Summer 2019). This analysis has helped designers, developers, and researchers in the Jupyter and AWS SageMaker community quantitatively assess how people use notebooks, with an emphasis on applications in data science, machine learning, and information visualization.
+
+The results of this research complement qualitative user studies and inform challenging UX questions to focus development on real user needs. This understanding of notebook applications is crucial to user-centered design. Because many of the notebooks hosted publicly on GitHub are created as part of educational endeavours such as online and in-person courses, these insights may be particularly valuable for the Jupyter education community.
+
+------------------------------------------------------------------------
+
+Advised by Brian Granger, co-founder of Project Jupyter and Senior Principal Technologist at AWS.
+
+Mentored by Steve Loeppky, Senior Software Development Manager for Amazon SageMaker Notebooks.

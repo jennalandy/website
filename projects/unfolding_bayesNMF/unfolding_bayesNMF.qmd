@@ -1,0 +1,15 @@
+---
+title: "Deep Unfolding Bayesian Non-Negative Matrix Factorization"
+author: "Jenna Landy"
+date: "5/1/2023"
+date-modefied: "2/1/2024"
+categories: ["IN PROGRESS", "deep learning", "mutational signatures", "genomics"]
+---
+
+Bayesian non-negative matrix factorization is a method used across fields including genomics, audio and signal processing, and neuroscience. The complexity of the posterior of Bayesian NMF requires MCMC methods, such as a Gibbs sampler, or variational inference. We propose a faster solution through deep algorithm unrolling. By designing a neural network where each layer mimics a single iterative update, we are able to improve speed without sacrificing model performance.
+
+------------------------------------------------------------------------
+
+Advised by Demba Ba, PhD\
+CRISP Lab, Harvard School of Engineering and Applied Sciences.
+

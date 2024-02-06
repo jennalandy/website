@@ -1,0 +1,11 @@
+---
+title: "A Transferable GNN for Perturb-Seq"
+author: "Jenna Landy"
+date: "11/1/2023"
+date-modefied: "2/1/2024"
+categories: ["IN PROGRESS", "deep learning", "genomics"]
+---
+
+CRISPR can be used to knock out a particular gene, or "perturb" it, so that it is no longer functional. Single cell RNA sequencing on perturbed and control cells (perturb-seq) can be used to measure the changes in gene expressions due to the perturbation, which are usually sparse. These measurements can then give insight into the functions and/or pathways of the perturbed gene. Biologists are interested in the perturbation effects of thousands of genes and their millions of combinations, but evaluating each combination experimentally is infeasible.
+
+We are working on predicting changes in gene expressions given a set of perturbations utilizing a graph of known functions from the [gene ontology (GO) database](https://geneontology.org/). We use a graph neural network to learn perturbation embeddings, which importantly, will allow predictions for combinations of perturbations that were never tested experimentally. We are focusing on the transferability of this model across datasets and making predictions that are robust across cell types and sequencing depths.

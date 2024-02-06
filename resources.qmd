@@ -1,0 +1,15 @@
+---
+title: "Resources I've Helped Created"
+---
+
+I believe that knowledge, especially knowledge that can advance a field as impactful as cancer genomics, should be as readily available and as free as open-source software. Below are tutorials and textbooks that I've made myself, contributed to, or edited.
+
+-   I edited the textbook [Introduction to Data Science](https://rafalab.dfci.harvard.edu/dsbook-part-1/) by Rafael Irizarry (2023)
+
+-   I was a pilot tester for early drafts of the textbook [Software Design by Example with Python](https://third-bit.com/sdxpy/) by Greg Wilson (2023)
+
+-   I created [a tutorial on Quarto for research](https://jennalandy.github.io/remodel-your-qmd/) at the beginner level, presented at Dana Farber Cancer Institute Department of Data Science Workshop Series (2023)
+
+-   I created [a tutorial on R Markdown and R package development for research](https://jennalandy.github.io/remodel-your-rmd/) at the intermediate/advanced level, presented at Harvard Biostatistics Student Seminar (2022)
+
+-   I co-authored [an introductory textbook](https://jennalandy.github.io/database_tutorials/index.html) on the use of databases and APIs (2020)

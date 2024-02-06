@@ -1,0 +1,18 @@
+---
+title: "Bayesian Causal Inference for Cancer Mutational Signatures"
+author: "Jenna Landy"
+date: "5/1/2023"
+date-modefied: "2/1/2024"
+categories: ["IN PROGRESS", "mutational signatures", "causal inference", "bayesian computation", "genomics"]
+---
+
+Mutational signatures analysis is a quickly growing field to model mutational processes in tumor genomes. Computationally-derived mutational signatures have been associated with known mutational pathways, including DNA damage repair deficiencies ([Jeong et al. 2021](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8752981/)) and deamination of 5-methylcytosine ([Nik-Zainal et al. 2012](https://www.cell.com/fulltext/S0092-8674(12)00528-4)), as well as known carcinogens, including tobacco smoking and ultraviolet radiation ([Pfeifer 2010](https://genomemedicine.biomedcentral.com/articles/10.1186/gm175)). This new way to characterize tumors has the potential to uncover yet unidentified mutational processes.
+
+We are looking at mutational signatures through the lens of causal inference to answer questions about the *causal* effects of such exposures on the presence and magnitude of mutational signatures in cancer genomes. Using mutational signatures (or any latent factor) as an outcome in the causal inference framework comes with many challenges.
+
+------------------------------------------------------------------------
+
+Advised by Giovanni Parmigiani, PhD and Nima Hejazi, PhD\
+Department of Data Science, Dana Farber Cancer Institute\
+Department of Biostatistics, Harvard T.H. Chan School of Public Health
+

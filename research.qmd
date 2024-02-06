@@ -1,0 +1,16 @@
+---
+title: "My Research"
+listing:
+    contents: projects
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: true
+    filter-ui: true
+page-layout: full
+title-block-banner: true
+---
+
+This is a rolling list of my research projects. I'm broadly interested in computational approaches to understanding molecular biology and mutational processes in cancer. My work draws from unsupervised learning, multi-study and ensemble learning, deep learning, and Bayesian modeling and computation. Many of my current projects explore various aspects of mutational signatures analysis, which models mutational processes in cancer genomes using latent factors.
+
+Some of these are tagged as in-progress, and this list will be updated regularly. Please reach out to me if our research interests align and you would like to chat!

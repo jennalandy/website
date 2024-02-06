@@ -1,0 +1,23 @@
+---
+title: "Software I've Helped Build"
+---
+
+The importance of open-source software and publicly accessible data was drilled into me while working as a software engineering intern at [Project Jupyter](https://jupyter.org/). I'm reminded of it whenever I read an interesting paper and want to understand it better. Embracing Cal Poly's [Learn by Doing](https://www.calpoly.edu/learn-by-doing) motto, I want to test out the method---but this only works when the authors release code to do so.
+
+I hope that including open-source software with each project I work on helps my readers to understand and use my work.
+
+### R Packages
+
+-   [bayesNMF](https://github.com/jennalandy/bayesNMF): an **in progress** R package for fitting Bayesian Non-Negative Matrix Factorization (NMF) with a variety of modeling specifications and the option to learn latent rank as part of the Bayesian model.
+
+-   [gridsemblefdr](https://github.com/jennalandy/gridsemblefdr): an R package for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing.
+
+### Jupyter Lab Extensions
+
+-   [jupyterlab-git](https://github.com/jupyterlab/jupyterlab-git): an extension to use git/GitHub within the JupyterLab environment.
+
+-   [easygit](https://github.com/jennalandy/jupyterlab-easygit): a minimal JupyterLab extension for basic version control without needing to learn git.
+
+-   [jupyterlab-shortcutui](https://github.com/jupyterlab/jupyterlab-shortcutui): a JupyterLab extension to edit keyboard shortcuts with a user interface.
+
+-   [plyto](https://github.com/jupytercalpoly/plyto): an extension to visualize training of ML models training in real time within the JupyterLab environment.

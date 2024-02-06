@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/research.html",
+    "items": [
+      "/projects/gridsemble/gridsemble.html",
+      "/projects/bayesNMF/bayesNMF.html",
+      "/projects/perturb_gnn/perturb_gnn.html",
+      "/projects/causal_sigs/causal_sigs.html",
+      "/projects/unfolding_bayesNMF/unfolding_bayesNMF.html",
+      "/projects/mt_augment_pos/mt_augment_pos.html",
+      "/projects/success/success.html",
+      "/projects/jupyter_research/jupyter_research.html"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+---
+title: "Part of Speech-Based Data Augmentation for Neural Machine Translation"
+author: "Jenna Landy"
+date: "3/1/2022"
+categories: ["deep learning", "NLP"]
+---
+
+Data augmentation improves accuracy of ML models for natural language processing tasks, such as neural machine translation (NMT), by increasing the amount and variety of training data. Augmentation approaches for NLP can be applied at the *token-level* (e.g. contextual replacement) or at the *embedding-level* (e.g. soft contextual replacement or mixing two sequences by averaging their embeddings with SeqMix). While prior methods keep the semantic meaning of a sentence, a weakness is that they don't maintain syntax. We addressed this by matching POS in word replacement and token mixing, which shows up to a 1 point increase in BLEU. Further, in prior SeqMix methods, the sequences to be mixed are chosen at random, which we address by combining more similar or different sequences. We found that mixing sequences of similar length shows up to a 0.6 point improvement in BLEU. [Paper](https://github.com/jennalandy/mt_augment_pos/blob/main/NoSyntaxationWithoutRepresentation.pdf) and [code](https://github.com/jennalandy/mt_augment_pos/tree/main) are publicly available.
+
+------------------------------------------------------------------------
+
+Advised by Christopher Tanner, PhD\
+Institute for Applied Computational Science, Harvard University
+

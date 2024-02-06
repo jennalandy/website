@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "Jenna Landy"
+  description: "???"
+  twitter-card:
+    creator: "@naive_bae"
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Research
+        href: research.qmd
+      - text: Software
+        href: software.qmd
+      - text: Resources
+        href: resources.qmd
+
+format:
+  html:
+    theme: [sandstone, _variables.scss]
+    css: styles.css
+
+editor: visual
+

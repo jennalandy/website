@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources I’ve Helped Created",
+    "section": "",
+    "text": "I believe that knowledge, especially knowledge that can advance a field as impactful as cancer genomics, should be as readily available and as free as open-source software. Below are tutorials and textbooks that I’ve made myself, contributed to, or edited.\n\nI edited the textbook Introduction to Data Science by Rafael Irizarry (2023)\nI was a pilot tester for early drafts of the textbook Software Design by Example with Python by Greg Wilson (2023)\nI created a tutorial on Quarto for research at the beginner level, presented at Dana Farber Cancer Institute Department of Data Science Workshop Series (2023)\nI created a tutorial on R Markdown and R package development for research at the intermediate/advanced level, presented at Harvard Biostatistics Student Seminar (2022)\nI co-authored an introductory textbook on the use of databases and APIs (2020)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Jenna Landy",
+    "section": "",
+    "text": "Hello! I’m a Ph.D. student in Biostatistics at Harvard and graduated with a B.S. in Statistics and Data Science from Cal Poly SLO.\n\nI research interesting problems in genomics using unsupervised learning, multi-study and ensemble learning, deep learning, and Bayesian modeling and computation.\n\n\n\nI develop publicly available software for every project to encourage the reproducibility and usability of my work.\nI am passionate about the creation and accessibility of educational resources for statistics and data science."
+  },
+  {
+    "objectID": "projects/perturb_gnn/perturb_gnn.html",
+    "href": "projects/perturb_gnn/perturb_gnn.html",
+    "title": "A Transferable GNN for Perturb-Seq",
+    "section": "",
+    "text": "CRISPR can be used to knock out a particular gene, or “perturb” it, so that it is no longer functional. Single cell RNA sequencing on perturbed and control cells (perturb-seq) can be used to measure the changes in gene expressions due to the perturbation, which are usually sparse. These measurements can then give insight into the functions and/or pathways of the perturbed gene. Biologists are interested in the perturbation effects of thousands of genes and their millions of combinations, but evaluating each combination experimentally is infeasible.\nWe are working on predicting changes in gene expressions given a set of perturbations utilizing a graph of known functions from the gene ontology (GO) database. We use a graph neural network to learn perturbation embeddings, which importantly, will allow predictions for combinations of perturbations that were never tested experimentally. We are focusing on the transferability of this model across datasets and making predictions that are robust across cell types and sequencing depths."
+  },
+  {
+    "objectID": "projects/causal_sigs/causal_sigs.html",
+    "href": "projects/causal_sigs/causal_sigs.html",
+    "title": "Bayesian Causal Inference for Cancer Mutational Signatures",
+    "section": "",
+    "text": "Mutational signatures analysis is a quickly growing field to model mutational processes in tumor genomes. Computationally-derived mutational signatures have been associated with known mutational pathways, including DNA damage repair deficiencies (Jeong et al. 2021) and deamination of 5-methylcytosine (Nik-Zainal et al. 2012), as well as known carcinogens, including tobacco smoking and ultraviolet radiation (Pfeifer 2010). This new way to characterize tumors has the potential to uncover yet unidentified mutational processes.\nWe are looking at mutational signatures through the lens of causal inference to answer questions about the causal effects of such exposures on the presence and magnitude of mutational signatures in cancer genomes. Using mutational signatures (or any latent factor) as an outcome in the causal inference framework comes with many challenges.\n\nAdvised by Giovanni Parmigiani, PhD and Nima Hejazi, PhD\nDepartment of Data Science, Dana Farber Cancer Institute\nDepartment of Biostatistics, Harvard T.H. Chan School of Public Health"
+  },
+  {
+    "objectID": "projects/success/success.html",
+    "href": "projects/success/success.html",
+    "title": "Studying Underlying Characteristics of Computing and Engineering Student Success (SUCCESS)",
+    "section": "",
+    "text": "I was a statistical consultant research assistant on the SUCCESS project, a collaboration between Cal Poly San Luis Obispo and Purdue University. In this role, I analyzed survey data on non-cognitive competencies in engineering students as predictors of academic success using R, communicated statistical results to non-statisticians, and contributed to the following three conference papers:\n\nSelf, B. P., Landy, J., Widmann, J. M., Chen, J., Kerfs, M. (2021, July), The Mechanics of SUCCESS: How Non-Cognitive and Affective Factors Relate to Academic Performance in Engineering Mechanics Paper presented at 2021 ASEE Virtual Annual Conference Content Access, Virtual Conference. https://strategy.asee.org/37876\n\nThis paper investigates how non-cognitive and affective (NCA) competencies (e.g. motivation, grit, belongingness, etc.) can better predict academic success in engineering, as measured by students grades in introductory physics, statics, and dynamics. I performed the analyses and wrote the methods, results, and discussion sections.\n\nChen, J., Landy, J. M., Scheidt, M., Major, J. C., Ge, J., Chambers, C. E., Grigorian, C., Kerfs, M., Berger, E. J., Godwin, A., Self, B. P., Widmann, J. M. (2020, June), Learning in Clusters: Exploring the Association Between Noncognitive and Affective Profiles of Engineering Students and Academic Performance Paper presented at 2020 ASEE Virtual Annual Conference Content Access, Virtual Conference. https://peer.asee.org/34901, DOI: 10.18260/1-2-34901\n\nThis paper investigates clustering students by their non-cognitive and affective (NCA) competencies and how academic success and retention differs between these groups. I performed the analyses and wrote the results section.\n\nWidmann, J., Self, B., Chen, J., Chambers, C., Kusakabe, K., Landy, J., Berger, E., Ge, J., Godwin, J., and Scheidt, M. (2019, July), Academic SUCCESS: An Analysis of How Non-Cognitive Profiles Vary by Discipline for Engineering and Computer Science Students. Paper presented at 2019 Research in Engineering Education Symposium. https://www.sasee.org.za/wp-content/uploads/REES-2019-proceedings.pdf, pages 540 - 548.\n\nThe paper looks at how non-cognative and affective competencies differ between students of different years. I administered surveys and wrote the methods section.\n\n\n\nAdvised by Jim Widmann, PhD\nMechanical Engineering Department, Cal Poly San Luis Obispo"
+  },
+  {
+    "objectID": "projects/jupyter_research/jupyter_research.html",
+    "href": "projects/jupyter_research/jupyter_research.html",
+    "title": "Public GitHub Notebook Corpus Research",
+    "section": "",
+    "text": "This was my independent research project as a data science intern at Amazon Web Services (AWS) in 2019. This work is available on Project Jupyter’s GitHub.\nThe goal of this project was to collect and analyze all public Jupyter Notebooks on GitHub (nearly 5 million at the time of this analyses in Summer 2019). This analysis has helped designers, developers, and researchers in the Jupyter and AWS SageMaker community quantitatively assess how people use notebooks, with an emphasis on applications in data science, machine learning, and information visualization.\nThe results of this research complement qualitative user studies and inform challenging UX questions to focus development on real user needs. This understanding of notebook applications is crucial to user-centered design. Because many of the notebooks hosted publicly on GitHub are created as part of educational endeavours such as online and in-person courses, these insights may be particularly valuable for the Jupyter education community.\n\nAdvised by Brian Granger, co-founder of Project Jupyter and Senior Principal Technologist at AWS.\nMentored by Steve Loeppky, Senior Software Development Manager for Amazon SageMaker Notebooks."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "My Research",
+    "section": "",
+    "text": "This is a rolling list of my research projects. I’m broadly interested in computational approaches to understanding molecular biology and mutational processes in cancer. My work draws from unsupervised learning, multi-study and ensemble learning, deep learning, and Bayesian modeling and computation. Many of my current projects explore various aspects of mutational signatures analysis, which models mutational processes in cancer genomes using latent factors.\nSome of these are tagged as in-progress, and this list will be updated regularly. Please reach out to me if our research interests align and you would like to chat!\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nGridsemble: Selective Ensembling for False Discovery Rates\n\n\n\n\n\n\n\nmultiple hypothesis testing\n\n\ngenomics\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nA Comparative Analysis of Bayesian NMF Models\n\n\n\n\n\n\n\nIN PROGRESS\n\n\nbayesian computation\n\n\nmutational signatures\n\n\ngenomics\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nA Transferable GNN for Perturb-Seq\n\n\n\n\n\n\n\nIN PROGRESS\n\n\ndeep learning\n\n\ngenomics\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nBayesian Causal Inference for Cancer Mutational Signatures\n\n\n\n\n\n\n\nIN PROGRESS\n\n\nmutational signatures\n\n\ncausal inference\n\n\nbayesian computation\n\n\ngenomics\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nDeep Unfolding Bayesian Non-Negative Matrix Factorization\n\n\n\n\n\n\n\nIN PROGRESS\n\n\ndeep learning\n\n\nmutational signatures\n\n\ngenomics\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nPart of Speech-Based Data Augmentation for Neural Machine Translation\n\n\n\n\n\n\n\ndeep learning\n\n\nNLP\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2022\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nStudying Underlying Characteristics of Computing and Engineering Student Success (SUCCESS)\n\n\n\n\n\n\n\n\n\n\n\n\nJun 15, 2020\n\n\nJenna Landy\n\n\n\n\n\n\n  \n\n\n\n\nPublic GitHub Notebook Corpus Research\n\n\n\n\n\n\n\n\n\n\n\n\nSep 1, 2019\n\n\nJenna Landy\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/bayesNMF/bayesNMF.html",
+    "href": "projects/bayesNMF/bayesNMF.html",
+    "title": "A Comparative Analysis of Bayesian NMF Models",
+    "section": "",
+    "text": "While many Bayesian non-negative matrix factorization (NMF) models have been proposed, there has yet to be a comprehensive comparison of their relative performances and computational requirements. Further, there is no open-source software to easily fit some of these models.\nI am developing an R software package, bayesNMF, that implements various model specifications of Bayesian NMF. I also include the option to learn the latent rank as a part of the Bayesian model. I am comparing these models in terms of reconstruction error, correctness of the learned latent factors (in simulation studies), memory usage, and speed.\nAdvised by Giovanni Parmigiani, PhD\nDepartment of Data Science, Dana Farber Cancer Institute\nDepartment of Biostatistics, Harvard T.H. Chan School of Public Health"
+  },
+  {
+    "objectID": "projects/mt_augment_pos/mt_augment_pos.html",
+    "href": "projects/mt_augment_pos/mt_augment_pos.html",
+    "title": "Part of Speech-Based Data Augmentation for Neural Machine Translation",
+    "section": "",
+    "text": "Data augmentation improves accuracy of ML models for natural language processing tasks, such as neural machine translation (NMT), by increasing the amount and variety of training data. Augmentation approaches for NLP can be applied at the token-level (e.g. contextual replacement) or at the embedding-level (e.g. soft contextual replacement or mixing two sequences by averaging their embeddings with SeqMix). While prior methods keep the semantic meaning of a sentence, a weakness is that they don’t maintain syntax. We addressed this by matching POS in word replacement and token mixing, which shows up to a 1 point increase in BLEU. Further, in prior SeqMix methods, the sequences to be mixed are chosen at random, which we address by combining more similar or different sequences. We found that mixing sequences of similar length shows up to a 0.6 point improvement in BLEU. Paper and code are publicly available.\n\nAdvised by Christopher Tanner, PhD\nInstitute for Applied Computational Science, Harvard University"
+  },
+  {
+    "objectID": "projects/gridsemble/gridsemble.html",
+    "href": "projects/gridsemble/gridsemble.html",
+    "title": "Gridsemble: Selective Ensembling for False Discovery Rates",
+    "section": "",
+    "text": "Landy, Jenna M., and Parmigiani, Giovanni. “Gridsemble: Selective Ensembling for False Discovery Rates.” arXiv preprint arXiv:2401.12865 (2024).\nGridsemble is a data-driven selective ensembling algorithm for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing. Existing methods for estimating fdr often yield different conclusions, yet the unobservable nature of fdr values prevents the use of traditional model selection. Our method circumvents this challenge by ensembling a subset of methods with weights based on their estimated performances, which are computed on synthetic datasets generated to mimic the observed data while including ground truth. This paper is on arXiv and is currently under review. The corresponding R software package is on GitHub.\nAdvised by Giovanni Parmigiani, PhD\nDepartment of Data Science, Dana Farber Cancer Institute\nDepartment of Biostatistics, Harvard T.H. Chan School of Public Health"
+  },
+  {
+    "objectID": "projects/unfolding_bayesNMF/unfolding_bayesNMF.html",
+    "href": "projects/unfolding_bayesNMF/unfolding_bayesNMF.html",
+    "title": "Deep Unfolding Bayesian Non-Negative Matrix Factorization",
+    "section": "",
+    "text": "Bayesian non-negative matrix factorization is a method used across fields including genomics, audio and signal processing, and neuroscience. The complexity of the posterior of Bayesian NMF requires MCMC methods, such as a Gibbs sampler, or variational inference. We propose a faster solution through deep algorithm unrolling. By designing a neural network where each layer mimics a single iterative update, we are able to improve speed without sacrificing model performance.\n\nAdvised by Demba Ba, PhD\nCRISP Lab, Harvard School of Engineering and Applied Sciences."
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "Software I’ve Helped Build",
+    "section": "",
+    "text": "The importance of open-source software and publicly accessible data was drilled into me while working as a software engineering intern at Project Jupyter. I’m reminded of it whenever I read an interesting paper and want to understand it better. Embracing Cal Poly’s Learn by Doing motto, I want to test out the method—but this only works when the authors release code to do so.\nI hope that including open-source software with each project I work on helps my readers to understand and use my work.\n\nR Packages\n\nbayesNMF: an in progress R package for fitting Bayesian Non-Negative Matrix Factorization (NMF) with a variety of modeling specifications and the option to learn latent rank as part of the Bayesian model.\ngridsemblefdr: an R package for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing.\n\n\n\nJupyter Lab Extensions\n\njupyterlab-git: an extension to use git/GitHub within the JupyterLab environment.\neasygit: a minimal JupyterLab extension for basic version control without needing to learn git.\njupyterlab-shortcutui: a JupyterLab extension to edit keyboard shortcuts with a user interface.\nplyto: an extension to visualize training of ML models training in real time within the JupyterLab environment."
+  }
+]

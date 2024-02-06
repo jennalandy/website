@@ -1,0 +1,25 @@
+---
+title: "Studying Underlying Characteristics of Computing and Engineering Student Success (SUCCESS)"
+author: "Jenna Landy"
+date: "6/15/2020"
+---
+
+I was a statistical consultant research assistant on the SUCCESS project, a collaboration between Cal Poly San Luis Obispo and Purdue University. In this role, I analyzed survey data on non-cognitive competencies in engineering students as predictors of academic success using R, communicated statistical results to non-statisticians, and contributed to the following three conference papers:
+
+-   Self, B. P., **Landy, J.**, Widmann, J. M., Chen, J., Kerfs, M. (2021, July), The Mechanics of SUCCESS: How Non-Cognitive and Affective Factors Relate to Academic Performance in Engineering Mechanics Paper presented at 2021 ASEE Virtual Annual Conference Content Access, Virtual Conference. <https://strategy.asee.org/37876>
+
+    > This paper investigates how non-cognitive and affective (NCA) competencies (e.g. motivation, grit, belongingness, etc.) can better predict academic success in engineering, as measured by students grades in introductory physics, statics, and dynamics. I performed the analyses and wrote the methods, results, and discussion sections.
+
+- Chen, J., **Landy, J. M.**, Scheidt, M., Major, J. C., Ge, J., Chambers, C. E., Grigorian, C., Kerfs, M., Berger, E. J., Godwin, A., Self, B. P., Widmann, J. M. (2020, June), Learning in Clusters: Exploring the Association Between Noncognitive and Affective Profiles of Engineering Students and Academic Performance Paper presented at 2020 ASEE Virtual Annual Conference Content Access, Virtual Conference. <https://peer.asee.org/34901>, DOI: 10.18260/1-2-34901
+
+    > This paper investigates clustering students by their non-cognitive and affective (NCA) competencies and how academic success and retention differs between these groups. I performed the analyses and wrote the results section.
+
+
+- Widmann, J., Self, B., Chen, J., Chambers, C., Kusakabe, K., **Landy, J.**, Berger, E., Ge, J., Godwin, J., and Scheidt, M. (2019, July), Academic SUCCESS: An Analysis of How Non-Cognitive Profiles Vary by Discipline for Engineering and Computer Science Students. Paper presented at 2019 Research in Engineering Education Symposium. <https://www.sasee.org.za/wp-content/uploads/REES-2019-proceedings.pdf>, pages 540 - 548.
+
+    > The paper looks at how non-cognative and affective competencies differ between students of different years. I administered surveys and wrote the methods section.
+
+------------------------------------------------------------------------
+
+Advised by Jim Widmann, PhD\
+Mechanical Engineering Department, Cal Poly San Luis Obispo
