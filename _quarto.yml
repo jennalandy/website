@@ -1,9 +1,9 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Jenna Landy"
-  description: "???"
   twitter-card:
     creator: "@naive_bae"
   navbar:
