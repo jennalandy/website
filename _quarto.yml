@@ -4,8 +4,7 @@ project:
 
 website:
   title: "Jenna Landy"
-  twitter-card:
-    creator: "@naive_bae"
+  favicon: images/Logo.png
   navbar:
     left:
       - text: Home

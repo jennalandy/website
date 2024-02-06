@@ -1,6 +1,6 @@
 ---
 title: "Jenna Landy"
-image: Jenna-headshot.png
+image: images/Jenna-headshot.png
 about:
     template: trestles
     image-shape: round
