@@ -18,10 +18,5 @@ about:
 Hello! I'm a Ph.D. student in Biostatistics at Harvard and graduated with a B.S. in Statistics and Data Science from Cal Poly SLO.
 
 -   I [research](research.qmd) interesting problems in genomics using unsupervised learning, multi-study and ensemble learning, deep learning, and Bayesian modeling and computation.
-
-```{=html}
-<!-- -->
-```
 -   I develop publicly available [software](software.qmd) for every project to encourage the reproducibility and usability of my work.
-
 -   I am passionate about the creation and accessibility of educational [resources](resources.qmd) for statistics and data science.

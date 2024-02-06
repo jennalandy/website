@@ -12,4 +12,3 @@ Bayesian non-negative matrix factorization is a method used across fields includ
 
 Advised by Demba Ba, PhD\
 CRISP Lab, Harvard School of Engineering and Applied Sciences.
-

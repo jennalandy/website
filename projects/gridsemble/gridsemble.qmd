@@ -9,6 +9,9 @@ categories: ["multiple hypothesis testing", "genomics"]
 
 Gridsemble is a data-driven selective ensembling algorithm for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing. Existing methods for estimating fdr often yield different conclusions, yet the unobservable nature of fdr values prevents the use of traditional model selection. Our method circumvents this challenge by ensembling a subset of methods with weights based on their estimated performances, which are computed on synthetic datasets generated to mimic the observed data while including ground truth. This paper is [on arXiv](https://arxiv.org/abs/2401.12865) and is currently under review. The corresponding R software package is [on GitHub](https://github.com/jennalandy/gridsemblefdr).
 
+------------------------------------------------------------------------
+
 Advised by Giovanni Parmigiani, PhD\
 Department of Data Science, Dana Farber Cancer Institute\
 Department of Biostatistics, Harvard T.H. Chan School of Public Health
+

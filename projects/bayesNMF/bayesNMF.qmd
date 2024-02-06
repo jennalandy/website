@@ -10,6 +10,9 @@ While many Bayesian non-negative matrix factorization (NMF) models have been pro
 
 I am developing an R software package, [bayesNMF](https://github.com/jennalandy/bayesNMF), that implements various model specifications of Bayesian NMF. I also include the option to learn the latent rank as a part of the Bayesian model. I am comparing these models in terms of reconstruction error, correctness of the learned latent factors (in simulation studies), memory usage, and speed.
 
+------------------------------------------------------------------------
+
 Advised by Giovanni Parmigiani, PhD\
 Department of Data Science, Dana Farber Cancer Institute\
 Department of Biostatistics, Harvard T.H. Chan School of Public Health
+
