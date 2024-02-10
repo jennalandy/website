@@ -1,0 +1,176 @@
+---
+title: "Getting Started with Mutational Signatures"
+---
+
+Mutational signatures analysis is a new way to characterize cancer genomes in a way that is interpretable and clinically relevant. Most methods are based on non-negative matrix factorization (NMF). This article serves as an introduction to the biological motivation for mutational signatures, the statistical methods used, and a sample analysis on simulated data.
+
+**Table of Contents**
+
+1.  Biological Motivation
+
+2.  Defining Mutational Signatures
+
+3.  Statistical Methods
+
+4.  Sample Analysis
+
+------------------------------------------------------------------------
+
+### Biological Motivation
+
+Until recently, cancer diagnosis and treatment was based primarily on the tissue of origin, clinical presentation, and tumor morphology. The ability to sequence tumor DNA has changed this. The term "cancer" now refers to many diseases "differentiated on the basis of varying combinations of cancer gene mutations" \[[Van Hoeck et al. 2019](https://doi.org/10.1186/s12885-019-5677-2)\].
+
+Cancer is characterized by uncontrolled cell replication due to mutations in somatic, or non-germline, cells \[[Baez-Ortega and Gori 2019](https://doi.org/10.1093/bib/bbx082)\]. There are some well-studied biological processes that lead to somatic mutations. For instance, in non-melanoma skin cancers, sunlight exposure leaves its trace through C-to-T transitions at dipyrimidine sequences and CC-to-TT tandem mutations. On the other hand, in smoking-associated lung cancers, we see G-to-T transversions, particularly at methylated CpG sites in TP53 (linked to polycyclic aromatic hydrocarbons) \[[Pfeifer 2010](https://doi.org/10.1186/gm175)\]. However, we are still in the dark as far as *most* of the processes that cause somatic mutations in cancer \[[Alexandrov et al. 2013](https://doi.org/10.1038/nature12477)\].
+
+Though they hadn't yet been defined, [Stratton, Cambelle, & Futreal (2009)](https://doi.org/10.1038/nature07943) perfectly summarizes the biological motivation for mutational signatures:
+
+> the catalogue of somatic mutations present in a cancer cell ... represents a cumulative archaeological record of all the mutational processes the cancer cell has experienced throughout the lifetime of the patient. It provides a rich, and predominantly unmined, source of information for cancer epidemiologists and biologists with which to interrogate the development of individual tumors
+
+**Mutational signatures analysis is a recent development to model a tumor's mutational landscape as the composition of multiple mutational processes working at once.**
+
+Most signatures focus on single base substitution (SBS) mutations, though signatures have been developed for double base substitutions, small insertions and deletions, copy number variations, structural variation, and RNA single base substitutions \[[Tate et al. 2019](https://doi.org/10.1093/nar/gky1015)\].
+
+------------------------------------------------------------------------
+
+### Defining Mutational Signatures
+
+-   **M =** Mutational catalog\
+    **M\[k,g\]** = counts of SBS mutation type **k** present in tumor genome **g**
+
+-   **P =** Signature matrix\
+    **P\[k,n\]** = probability of SBS mutation type **k** resulting from mutational signature **n**
+
+For SBS signatures, a "type" of mutation is defined by the single base substitution and the nucleotides on either side. For instance, ACT \> AGT has a C\>T substitution (the mutation) and an A on the left and T on the right (the context**)**. In the simplest case, we're not concerned with what DNA strand the mutation was on, so we only consider substitutions of an A or a C. This gives six options for the substitution A\>C, A\>G, A\>T, C\>A, C\>G, C\>T, four options for the nucleotide on the left, and four options for the nucleotide on the right, giving 6 ⋅ 4 ⋅ 4 = **96 SBS mutation types**.
+
+A tumor's **mutational catalog** is its count of each mutation type. The catalog for each tumor genome **g**, **M\[ ,g\]**, is a vector of length 96. The full mutational catalog matrix **M** has dimension 96 x G where G is the total number of tumor genomes, and tumors' catalogs are columns.
+
+A **mutational signature** is a mathematical representation of a mutational process. A signature defines **how likely the mutational process is to give rise to each type of mutation**. Mathematically, signature **n**, denoted **P\[,n\]**, is a probability distribution over these mutation types. The full signatures matrix **P** has dimension 96 x N where N is the total number of signatures, and signatures are columns.
+
+![Definition of a mutational signature](https://cdn-images-1.medium.com/max/1600/1*9u3TKHJWeT08lmodTYPmDQ.png)
+
+Below is an example of a common visualization of a signature ([COSMIC SBS3](https://cancer.sanger.ac.uk/signatures/sbs/sbs3/) here). Mutation types are grouped based on the central single base substitution, each with 16 options for context.
+
+![[COSMIC SBS3 GRCh37 (signatures v3.4)](https://cancer.sanger.ac.uk/signatures/sbs/sbs3/) \[[Tate et al. 2019](https://doi.org/10.1093/nar/gky1015)\]](https://cdn-images-1.medium.com/max/1600/1*NrD-g3vtgFriPUhzq_JS8g.jpeg)
+
+------------------------------------------------------------------------
+
+### Statistical Methods
+
+Biologically, we said that *a tumor's mutational landscape is the composition of multiple mutational processes working at once*. Mathematically, we represent this by defining *a tumor's mutational catalog as a linear combination of multiple mutational signatures*. We define each weight **E\[n,g\]** as the **contribution of** mutational signature **n** to tumor genome **g**, or equivalently the **exposure** of tumor genome **g** to mutational signature **n**. This definition simplifies to the expression **M = PE**.
+
+Because **M** is a counts matrix, and **P** a matrix of probabilities, both are inherently non-negative. We define **E** as non-negative as well, because mutational processes can only add mutations, not get rid of them\*. Although we originally defined signatures **P\[,n\]** as probability distributions summing to one, we can rescale matrices after the fact rather than incorporating the addition constraint here.
+
+![Non-negative matrix factorization (NMF) for mutational signatures](https://cdn-images-1.medium.com/max/1600/1*4t0_S5xs650OvgSUhX5GDw.png)
+
+The matrix decomposition **M = PE** with all non-negative matrices can be solved with **non-negative matrix factorization** (NMF). 
+
+\* I note that the use positive weights is different from other matrix decomposition or dictionary learning applications to genomics. For example, if we were looking at RNA-seq data, a mutational process may increase *or* decrease gene expression, so weights would be allowed to be negative.
+
+### Simulated Data & Sample Analysis
+
+#### Generating Simulated Data
+
+We can generate simulated data based off of the current "gold standard" signatures from COSMIC \[[Tate et al. 2019](https://doi.org/10.1093/nar/gky1015)\]. Below, I use their first five signatures and generate 20 tumor genomes.
+
+```         
+N <- 5
+G <- 20
+
+# download COSMIC signatures, use the first N as our P
+url <- "https://cog.sanger.ac.uk/cosmic-signatures-production/documents/COSMIC_v3.3.1_SBS_GRCh37.txt"
+cosmic_signatures <- read.csv(url, sep = '\t', row.names = 1)
+P <- as.matrix(cosmic_signatures[,1:N])
+
+# simulate # mutations from each signature n to each tumor genome g
+# centered s.t. each tumor has around 1000 total mutations
+E <- matrix(nrow = N, ncol = G)
+n_mutations <- 1000
+for (g in 1:G) {
+    E[,g] <- rpois(N, 1000/N)
+}
+
+# simulate mutational catalog centered at PE
+M = matrix(nrow = 96, ncol = G)
+for (g in 1:G) {
+    M[,g] <- rpois(96, P %*% E[,g])
+}
+```
+
+#### Analysis Using NMF
+
+Traditionally, optimal **P** and **E** matrices are found through gradient descent using multiplicative rather than additive updates to ensure non-negativity. In R, gradient descent NMF can be performed using the NMF package on CRAN \[[Gaujoux and Seoighe 2010](https://doi.org/10.1186/1471-2105-11-367)\]. 
+
+```         
+install.packages("NMF")
+library(NMF)
+```
+
+More recently, NMF has been translated to the Bayesian space, where priors are put on **P** and **E** and an optimal solution is found by maximizing the posteriors of **P** and **E** using MCMC methods (I will be publishing articles on the specifics of these methods soon!). In R, Bayesian NMF can be fit using my bayesNMF package on GitHub \[[Landy 2023](https://github.com/jennalandy/bayesNMF)\].
+
+```         
+library(devtools)
+devtools::install_github("jennalandy/bayesNMF")
+library(bayesNMF)
+```
+
+For either method, we must specify the reduced dimension rank, or in our case, the number of mutational signatures to fit. Although we know the true number of signatures is 5 because the data is simulated, I will proceed as if this is unknown to reflect a real data analysis.
+
+We can pass in ranks from 2 up to 15 to the NMF package in order to choose a rank. This is always a rather subjective choice, and there are several approaches to choose the optimal rank. Many introductory tutorials will reference the elbow method, or choosing the rank that is at the inflection point of the RSS curve. A more sophisticated approach focuses on Brunet's cophenetic correlation cofficient (CCC) method. The CCC measures dispersion for the consensus matrix. This method chooses the rank after which the CCC begins to decrease (in our data, at rank = 5, top left plot below).
+
+```         
+nmf_res <- NMF::nmf(adeno_catalog, rank = 2:15)
+plot(nmf_res)
+```
+
+------------------------------------------------------------------------
+
+Moving forward with rank = 5, we can run both gradient descent and Bayesian methods:
+
+```         
+gd_nmf_rank7_res <- NMF::nmf(M, rank = 5)
+gd_nmf_rank7_P <- nmf_rank7_res@fit@W
+gd_nmf_rank7_E <- nmf_rank7_res@fit@H
+
+# This function saves results in bayes_nmf_rank7.RData and 
+# logs progress in bayes_nmf_rank7.log
+bayes_nmf_rank7_res <- bayesNMF::nmf_normal_exponential(
+  M, N = 5,
+  file = "bayes_nmf_rank7"
+)
+bayes_nmf_rank7_P <- bayes_nmf_rank7_res$P.mean
+bayes_nmf_rank7_E <- bayes_nmf_rank7_res$E.mean
+```
+
+#### Evaluate Results
+
+Finally, we can investigate how our estimated mutational signatures align with the true signatures used for simulating the data.
+
+```         
+bayesNMF::get_heatmap(est_P = gd_nmf_rank7_P, true_P = P)
+```
+
+```         
+bayesNMF::get_heatmap(est_P = bayes_nmf_rank7_P, true_P = P)
+```
+
+------------------------------------------------------------------------
+
+### References
+
+1.  Van Hoeck, A., Tjoonk, N.H., van Boxtel, R. *et al.* Portrait of a cancer: mutational signature analyses for cancer diagnostics. *BMC Cancer* **19**, 457 (2019). <https://doi.org/10.1186/s12885-019-5677-2>.
+
+2.  Helleday, Thomas, Saeed Eshtad, and Serena Nik-Zainal. 2014. "Mechanisms Underlying Mutational Signatures in Human Cancers." *Nature Reviews Genetics* 15: 585--98. <https://doi.org/10.1038/nrg3729>.
+
+3.  Adrian Baez-Ortega, Kevin Gori, Computational approaches for discovery of mutational signatures in cancer, *Briefings in Bioinformatics*, Volume 20, Issue 1, January 2019, Pages 77--88, <https://doi.org/10.1093/bib/bbx082>
+
+4.  Alexandrov, Ludmil B., Serena Nik-Zainal, David C. Wedge, Samuel A. J. R. Aparicio, Sam Behjati, Andrew V. Biankin, Graham R. Bignell, et al. 2013. "Signatures of Mutational Processes in Human Cancer." *Nature* 500: 415--21. <https://doi.org/10.1038/nature12477>.
+
+5.  Pfeifer, G.P. Environmental exposures and mutational patterns of cancer genomes. *Genome Med* **2**, 54 (2010). <https://doi.org/10.1186/gm175>
+
+6.  Stratton, M., Campbell, P. & Futreal, P. The cancer genome. *Nature* **458**, 719--724 (2009). <https://doi.org/10.1038/nature07943>
+
+7.  John G Tate, Sally Bamford, Harry C Jubb, Zbyslaw Sondka, David M Beare, Nidhi Bindal, Harry Boutselakis, Charlotte G Cole, Celestino Creatore, Elisabeth Dawson, Peter Fish, Bhavana Harsha, Charlie Hathaway, Steve C Jupe, Chai Yin Kok, Kate Noble, Laura Ponting, Christopher C Ramshaw, Claire E Rye, Helen E Speedy, Ray Stefancsik, Sam L Thompson, Shicai Wang, Sari Ward, Peter J Campbell, Simon A Forbes, COSMIC: the Catalogue Of Somatic Mutations In Cancer, *Nucleic Acids Research*, Volume 47, Issue D1, 08 January 2019, Pages D941--D947, <https://doi.org/10.1093/nar/gky1015>
+
+8.  Gaujoux R, Seoighe C (2010). "A flexible R package for nonnegative matrix factorization." *BMC Bioinformatics*, **11**(1), 367. ISSN 1471--2105, [doi:10.1186/1471--2105--11--367](https://doi.org/10.1186/1471-2105-11-367), <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-11-367>.
+
+9.  Landy, Jenna (2023). "bayesNMF: an R package with various models for Bayesian NMF." *GitHub*. <https://github.com/jennalandy/bayesNMF>

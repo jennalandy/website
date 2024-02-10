@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jenna Landy">
+<meta name="dcterms.date" content="2024-02-09">
+
+<title>Jenna Landy - Getting Started with Mutational Signatures</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/Logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Jenna Landy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">My Blog: Learning The Curve</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#biological-motivation" id="toc-biological-motivation" class="nav-link active" data-scroll-target="#biological-motivation">Biological Motivation</a></li>
+  <li><a href="#defining-mutational-signatures" id="toc-defining-mutational-signatures" class="nav-link" data-scroll-target="#defining-mutational-signatures">Defining Mutational Signatures</a>
+  <ul class="collapse">
+  <li><a href="#data-mutational-catalog-m" id="toc-data-mutational-catalog-m" class="nav-link" data-scroll-target="#data-mutational-catalog-m">Data: Mutational Catalog <span class="math inline">\(M\)</span></a></li>
+  <li><a href="#latent-factors-mutational-signatures-p" id="toc-latent-factors-mutational-signatures-p" class="nav-link" data-scroll-target="#latent-factors-mutational-signatures-p">Latent Factors: Mutational Signatures <span class="math inline">\(P\)</span></a></li>
+  </ul></li>
+  <li><a href="#statistical-methods" id="toc-statistical-methods" class="nav-link" data-scroll-target="#statistical-methods">Statistical Methods</a></li>
+  <li><a href="#key-literature" id="toc-key-literature" class="nav-link" data-scroll-target="#key-literature">Key Literature</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting Started with Mutational Signatures</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Mutational Signatures</div>
+    <div class="quarto-category">NMF</div>
+    <div class="quarto-category">Genomics</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jenna Landy </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 9, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="logo.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic of a DNA strand with a mutation in it and a bar graph underneath."></p>
+</figure>
+</div>
+<p>Mutational signatures model mutational processes in cancer as latent factors. This method characterizes cancer genomes in an&nbsp;<strong><em>interpretable</em></strong>&nbsp;and&nbsp;<strong><em>clinically relevant</em></strong>&nbsp;way. This article introduces the biological motivation for mutational signatures, the statistical methods used, and key literature to get you started in this field.</p>
+<p><em>Referencing this post: Landy, Jenna (2024, February 9), Getting Started with Mutational Signatures, Learning the Curve.</em></p>
+<section id="biological-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="biological-motivation">Biological Motivation</h2>
+<p>Until recently, cancer diagnosis and treatment were based primarily on the tissue of origin, clinical presentation, and tumor morphology. The ability to sequence tumor DNA has changed this. The term “cancer” now refers to many diseases “differentiated on the basis of varying combinations of cancer gene mutations” <span class="citation" data-cites="vanhoeck2019">(<a href="#ref-vanhoeck2019" role="doc-biblioref">Van Hoeck et al. 2019</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="over_time.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic showing lungs, a person in pain, and a blob representing a tumor on the left (these represent how cancer diagnosis and treatment used to be based primarily on the tissue of origin, clinical presentation, and tumor morphology) with an arrow pointing to a computer with DNA on it on the right (the new approaches made possible by genome sequencing)."></p>
+</figure>
+</div>
+<p>Cancer is characterized by uncontrolled cell replication due to somatic mutations—mutations in non-germline cells gained through a patient’s lifetime <span class="citation" data-cites="pfeifer2010">(<a href="#ref-pfeifer2010" role="doc-biblioref">Pfeifer 2010</a>)</span>. There are many well-studied biological processes that lead to somatic mutations. Some processes are exogenous in origin. For example, in non-melanoma skin cancers, sunlight exposure leaves its trace through C-to-T transitions at dipyrimidine sequences and CC-to-TT tandem mutations. Similarly, in smoking-associated lung cancers, we see G-to-T transversions, particularly at methylated CpG sites in TP53 <span class="citation" data-cites="pfeifer2010">(<a href="#ref-pfeifer2010" role="doc-biblioref">Pfeifer 2010</a>)</span>. Other mutational processes are endogenous in origin <span class="citation" data-cites="cannataro2022">(<a href="#ref-cannataro2022" role="doc-biblioref">Cannataro, Mandell, and Townsend 2022</a>)</span>. However, there are still many unknown processes that cause somatic mutations in cancer <span class="citation" data-cites="alexandrov2013">(<a href="#ref-alexandrov2013" role="doc-biblioref">L. B. Alexandrov et al. 2013</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="mut_process.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic showing a ray from the sun causing a mutation in the DNA, which then causes uncontrolled cell growth."></p>
+</figure>
+</div>
+<p>Though mutational signatures hadn’t yet been defined, Stratton, Cambelle, &amp; Futreal perfectly summarized their biological motivation in 2009 <span class="citation" data-cites="stratton2009">(<a href="#ref-stratton2009" role="doc-biblioref">Stratton, Campbell, and Futreal 2009</a>)</span>:</p>
+<blockquote class="blockquote">
+<p>the catalogue of somatic mutations present in a cancer cell&nbsp;… represents a cumulative archaeological record of all the mutational processes the cancer cell has experienced throughout the lifetime of the patient. It provides a rich, and predominantly unmined, source of information for cancer epidemiologists and biologists with which to interrogate the development of individual tumors</p>
+</blockquote>
+<p>Mutational signatures analysis models a tumor’s mutational landscape as the composition of multiple mutational processes working at once.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="mut_landscape.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic showing the sun, a cigarette, and an unknown mutational process all contributing to the mutational composition of the tumor."></p>
+</figure>
+</div>
+</section>
+<section id="defining-mutational-signatures" class="level2">
+<h2 class="anchored" data-anchor-id="defining-mutational-signatures">Defining Mutational Signatures</h2>
+<section id="data-mutational-catalog-m" class="level3">
+<h3 class="anchored" data-anchor-id="data-mutational-catalog-m">Data: Mutational Catalog <span class="math inline">\(M\)</span></h3>
+<p>Most signatures work focuses on single base substitution (SBS) mutations, though signatures have also been developed for double base substitutions, small insertions and deletions, copy number variations, structural variation, and RNA single base substitutions <span class="citation" data-cites="tate2018">(<a href="#ref-tate2018" role="doc-biblioref">Tate et al. 2018</a>)</span>.</p>
+<p>For SBSs, a “type” of mutation is defined by the change in the sequence and the nucleotides on either side. For instance, a sequence ACT mutated to AGT has a C&gt;T substitution (the mutation) with an A on the left and a T on the right (the context). We represent this mutation type as “A[C&gt;G]T”.</p>
+<p>In the simplest case, we’re not concerned with which DNA strand the mutation was on, so we only consider substitutions at a C or a T. This gives six options for the substitution (C&gt;A, C&gt;G, C&gt;T, T&gt;A, T&gt;C, T&gt;G) and four options each for the nucleotides on the left and right, so a total of <span class="math inline">\(6 \times 4 \times 4\)</span> = <strong><em>96 SBS mutation types</em></strong>. We use base-pair matching to convert mutations at a G or an A into one of these 96 types.</p>
+<p>A tumor’s <strong><em>mutational catalog</em></strong> is how often each mutation type appears across its genome. The catalog for each tumor genome <span class="math inline">\(g\)</span>, <span class="math inline">\(M_{g}\)</span>, is a vector of length 96. The full mutational catalog matrix <span class="math inline">\(M\)</span> has dimension 96 x G where G is the total number of tumor genomes, and tumors’ catalogs are the columns.</p>
+<div style="text-align: center; font-weight: bold;">
+<p><span class="math inline">\(M\)</span> = mutational catalog matrix, our observed data</p>
+<p><span class="math inline">\(M_{kg}\)</span> = count of mutation type <span class="math inline">\(k\)</span> in tumor genome <span class="math inline">\(g\)</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="M_matrix.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic showing an example mutational catalog matrix on a computer screen. The rows are labelled with mutation types and columns are labelled &quot;Sample 1&quot;,...,&quot;Sample G&quot;."></p>
+</figure>
+</div>
+</section>
+<section id="latent-factors-mutational-signatures-p" class="level3">
+<h3 class="anchored" data-anchor-id="latent-factors-mutational-signatures-p">Latent Factors: Mutational Signatures <span class="math inline">\(P\)</span></h3>
+<p>A <strong>mutational signature</strong> is a mathematical representation of a mutational process defining <strong>how likely the mutational process is to give rise to each type of mutation</strong>. Mathematically, signature <span class="math inline">\(n\)</span>, denoted <span class="math inline">\(P_n\)</span>, is a probability distribution over these mutation types. The complete signatures matrix <span class="math inline">\(P\)</span> has dimension 96 x N where N is the total number of signatures, and signatures are columns.</p>
+<div style="text-align: center; font-weight: bold;">
+<p><span class="math inline">\(P\)</span> = signature matrix, our latent factors representing mutational processes</p>
+<p><span class="math inline">\(P_{kn}\)</span> = probability of mutation type <span class="math inline">\(k\)</span> resulting from mutational signature <span class="math inline">\(n\)</span></p>
+<p><span class="math inline">\(P_{kn}\)</span> = Pr(mutation type k | signature n) such that <span class="math inline">\(\sum_k P_{kn} = 1 \forall n\)</span></p>
+</div>
+<p>A common way to visualize individual signatures is as a bar plot of these probabilities, grouped based on the central mutation, where each group has 16 options for the left and right nucleotide context. Below is this type of plot for one signature, <a href="https://cancer.sanger.ac.uk/signatures/sbs/sbs3/">COSMIC SBS3</a>.</p>
+<div style="text-align: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SBS3.jpg" class="img-fluid figure-img" style="width:70.0%" alt="A bar chart of a single mutational signature."></p>
+<figcaption class="figure-caption">COSMIC SBS3 GRCh37 (signatures v3.4). Identified in <span class="citation" data-cites="nik-zainal2012">Nik-Zainal, Alexandrov, et al. (<a href="#ref-nik-zainal2012" role="doc-biblioref">2012</a>)</span>.</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="statistical-methods" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-methods">Statistical Methods</h2>
+<p>In order to model mutational signatures, we need to convert our biological motivation about mutational processes into a mathematical expression using our mathematical definition of mutational signatures.</p>
+<p>Biologically, we said</p>
+<blockquote class="blockquote">
+<p><em>a tumor’s mutational landscape is the composition of multiple mutational processes working at once</em>.</p>
+</blockquote>
+<p>Mathematically, we can say</p>
+<blockquote class="blockquote">
+<p><em>a tumor’s mutational catalog is a linear combination of multiple mutational signatures</em>.</p>
+</blockquote>
+<p>The weights of this linear combination are defined by a matrix <span class="math inline">\(E\)</span>, where <span class="math inline">\({E}_{ng}\)</span> is the <strong>number of mutations</strong> in tumor genome <span class="math inline">\(g\)</span> attributed to mutational signature <span class="math inline">\(n\)</span>. <span class="math inline">\(E_{ng}\)</span> is often called the <strong>exposure</strong> of tumor genome <span class="math inline">\(g\)</span> to mutational signature <span class="math inline">\(n\)</span> or, equivalently, the <strong>contribution</strong> of mutational signature <span class="math inline">\(n\)</span> to tumor genome <span class="math inline">\(g\)</span>. This definition gives rise to the following matrix factorization problem:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M_g =&amp; \sum_n P_n E_{ng}\\
+M = PE, &amp;\text{ all non-negative}.
+\end{aligned}
+\]</span></p>
+<p>A necessary restriction is that all our matrices of interest, <span class="math inline">\(M\)</span>, <span class="math inline">\(P\)</span>, and <span class="math inline">\(E\)</span> have non-negative values. The non-negativity constraint is trivial for the first two because <span class="math inline">\(M\)</span> is a counts matrix and <span class="math inline">\(P\)</span> a matrix of probabilities. The choice for <span class="math inline">\(E\)</span> to be non-negative comes from the biology behind signatures: mutational processes can only add mutations, not get rid of them<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, so these weights must be positive as well.</p>
+<p>This matrix factorization has scale non-identifiability because <span class="math inline">\(M = PE\)</span> and <span class="math inline">\(M = (P/2)(2E)\)</span> are equivalent solutions. For this reason, we can drop the restriction that <span class="math inline">\(\sum_k P_{kn} = 1 \forall n\)</span> and rescale the solution after the fact.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="nmf.png" class="img-fluid figure-img" style="width:70.0%" alt="A graphic showing the matrix decomposition for M = PE, with label &quot;mutational catalog = signatures times exposures&quot;."></p>
+</figure>
+</div>
+<p><strong>Non-negative matrix factorization (NMF)</strong> is a widely used approach for this type of problem. R and Python packages can be used to run NMF on your local computer easily. The example below shows in each language (1) generating a mutational catalog matrix <span class="math inline">\(M\)</span> with <span class="math inline">\(G\)</span> = 20 samples and no true signal from latent factors and (2) performing NMF and extracting final estimates <span class="math inline">\(\hat P\)</span> and <span class="math inline">\(\hat E\)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Python</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> NMF</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">96</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>rank <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.random.poisson(lam <span class="op">=</span> lam, size <span class="op">=</span> [K, G])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NMF(n_components <span class="op">=</span> rank)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>P_hat <span class="op">=</span> model.fit_transform(M)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>E_hat <span class="op">=</span> model.components_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NMF)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">96</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rank <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rpois</span>(<span class="at">n =</span> K<span class="sc">*</span>G, <span class="at">lambda =</span> lambda), </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> K, <span class="at">ncol =</span> G</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>nmf_res <span class="ot">&lt;-</span> NMF<span class="sc">::</span><span class="fu">nmf</span>(M, <span class="at">rank =</span> rank)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>P_hat <span class="ot">&lt;-</span> nmf_res<span class="sc">@</span>fit<span class="sc">@</span>W</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>E_hat <span class="ot">&lt;-</span> nmf_res<span class="sc">@</span>fit<span class="sc">@</span>H</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>A separate post with the details of this algorithm and its variations is in progress.</p>
+</section>
+<section id="key-literature" class="level2">
+<h2 class="anchored" data-anchor-id="key-literature">Key Literature</h2>
+<p>This is a set of papers that I found very useful to get a solid footing in this field. This is by no means a comprehensive list of all mutational signatures analysis methods or applications.</p>
+<p><span class="citation" data-cites="nik-zainal2012">Nik-Zainal, Alexandrov, et al. (<a href="#ref-nik-zainal2012" role="doc-biblioref">2012</a>)</span> was the first paper to perform mutational signatures analysis as we described above. They looked at the mutational catalogs of 21 breast cancer genomes to extract five mutational signatures. They report a signature that "is likely due to deamination of 5-methylcytosine, a relatively well-characterized mutational process", while the rest had unknown origins. Its companion paper <span class="citation" data-cites="nik-zainal2012a">(<a href="#ref-nik-zainal2012a" role="doc-biblioref">Nik-Zainal, Van&nbsp;Loo, et al. 2012</a>)</span> divides somatic mutations into those shared by all cells in the sample and those that are subclonal. By classifying whether mutations were early clonal, late clonal, or subclonal in regions of copy number gains, they are able to assess the relative contributions of the five signatures at different times during each cancer's evolution.</p>
+<p><span class="citation" data-cites="alexandrov2013a">Ludmil&nbsp;B. Alexandrov et al. (<a href="#ref-alexandrov2013a" role="doc-biblioref">2013</a>)</span> extends these methods into a reproducible framework. They apply this framework to a mutational catalog matrix with samples from 30 different types of cancer and reveal 21 distinct signatures. Some signatures are observed in only one or a subset of cancer types, while others are shared.</p>
+<p><span class="citation" data-cites="fischer2013">Fischer et al. (<a href="#ref-fischer2013" role="doc-biblioref">2013</a>)</span> further extends the NMF methods to incorporate mutational opportunity and uses a probabilistic form of NMF solved using the expectation maximization (EM) algorithm rather than gradient descent. <span class="citation" data-cites="rosales2016">Rosales et al. (<a href="#ref-rosales2016" role="doc-biblioref">2016</a>)</span> uses Bayesian NMF and introduces the idea of a differential exposure score associating exposures with clinical data to see how the activity of each signature correlates to clinical results. They also show that the exposure matrix can be used to cluster tumor samples into clinically meaningful subtypes.</p>
+<p><span class="citation" data-cites="nik-zainal2017">Nik-Zainal and Morganella (<a href="#ref-nik-zainal2017" role="doc-biblioref">2017</a>)</span> again compares mutational signatures across cancer types and indicates the need for multi-study and multi-cancer methods. <span class="citation" data-cites="grabski2023">Grabski, Trippa, and Parmigiani (<a href="#ref-grabski2023" role="doc-biblioref">2023</a>)</span> satisfies this need with a Bayesian NMF approach that can jointly analyze multiple mutational catalog matrices, such as different studies or cancer types. This method allows for signatures to be specific to one study or shared by any number of studies.</p>
+<p><span class="citation" data-cites="tate2018">Tate et al. (<a href="#ref-tate2018" role="doc-biblioref">2018</a>)</span> introduces <a href="https://cancer.sanger.ac.uk/signatures/">COSMIC: the Catalogue Of Somatic Mutations In Cancer</a>, a resource kept up to date with the most recently discovered mutational signatures, their proposed etiology, and the cancer types they impact. SBS signatures can be found <a href="https://cancer.sanger.ac.uk/signatures/sbs/">here</a> and can easily be downloaded for use in analysis. COSMIC has been updated since, most recently with analysis from <span class="citation" data-cites="alexandrov2020">L. B. Alexandrov et al. (<a href="#ref-alexandrov2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Other important references include <span class="citation" data-cites="baez-ortega2017">Baez-Ortega and Gori (<a href="#ref-baez-ortega2017" role="doc-biblioref">2017</a>)</span>, which reviews various mathematical models and computational techniques for mutational signature analysis, and <span class="citation" data-cites="kucab2019">Kucab et al. (<a href="#ref-kucab2019" role="doc-biblioref">2019</a>)</span>, which experimentally validates the link between certain mutagens and mutational signatures. <span class="citation" data-cites="vanhoeck2019">Van Hoeck et al. (<a href="#ref-vanhoeck2019" role="doc-biblioref">2019</a>)</span> describes the status of mutational signature analysis and discusses future challenges.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alexandrov2020" class="csl-entry" role="listitem">
+Alexandrov, Ludmil B., Jaegil Kim, Nicholas J. Haradhvala, Mi Ni Huang, Alvin Wei Tian Ng, Yang Wu, Arnoud Boot, et al. 2020. <span>“The Repertoire of Mutational Signatures in Human Cancer.”</span> <em>Nature</em> 578 (7793): 94–101. <a href="https://doi.org/10.1038/s41586-020-1943-3">https://doi.org/10.1038/s41586-020-1943-3</a>.
+</div>
+<div id="ref-alexandrov2013" class="csl-entry" role="listitem">
+Alexandrov, Ludmil B., Serena Nik-Zainal, David C. Wedge, Samuel A. J. R. Aparicio, Sam Behjati, Andrew V. Biankin, Graham R. Bignell, et al. 2013. <span>“Signatures of Mutational Processes in Human Cancer.”</span> <em>Nature</em> 500 (7463): 415–21. <a href="https://doi.org/10.1038/nature12477">https://doi.org/10.1038/nature12477</a>.
+</div>
+<div id="ref-alexandrov2013a" class="csl-entry" role="listitem">
+Alexandrov, Ludmil&nbsp;B., Serena Nik-Zainal, David&nbsp;C. Wedge, Peter&nbsp;J. Campbell, and Michael&nbsp;R. Stratton. 2013. <span>“Deciphering Signatures of Mutational Processes Operative in Human Cancer.”</span> <em>Cell Reports</em> 3 (1): 246–59. <a href="https://doi.org/10.1016/j.celrep.2012.12.008">https://doi.org/10.1016/j.celrep.2012.12.008</a>.
+</div>
+<div id="ref-baez-ortega2017" class="csl-entry" role="listitem">
+Baez-Ortega, Adrian, and Kevin Gori. 2017. <span>“Computational Approaches for Discovery of Mutational Signatures in Cancer.”</span> <em>Briefings in Bioinformatics</em> 20 (1): 77–88. <a href="https://doi.org/10.1093/bib/bbx082">https://doi.org/10.1093/bib/bbx082</a>.
+</div>
+<div id="ref-cannataro2022" class="csl-entry" role="listitem">
+Cannataro, Vincent L., Jeffrey D. Mandell, and Jeffrey P. Townsend. 2022. <span>“Attribution of Cancer Origins to Endogenous, Exogenous, and Preventable Mutational Processes.”</span> Edited by Melissa Wilson. <em>Molecular Biology and Evolution</em> 39 (5). <a href="https://doi.org/10.1093/molbev/msac084">https://doi.org/10.1093/molbev/msac084</a>.
+</div>
+<div id="ref-fischer2013" class="csl-entry" role="listitem">
+Fischer, Andrej, Christopher JR Illingworth, Peter J Campbell, and Ville Mustonen. 2013. <span>“EMu: Probabilistic Inference of Mutational Processes and Their Localization in the Cancer Genome.”</span> <em>Genome Biology</em> 14 (4): R39. <a href="https://doi.org/10.1186/gb-2013-14-4-r39">https://doi.org/10.1186/gb-2013-14-4-r39</a>.
+</div>
+<div id="ref-grabski2023" class="csl-entry" role="listitem">
+Grabski, Isabella N., Lorenzo Trippa, and Giovanni Parmigiani. 2023. <span>“Bayesian Multi-Study Non-Negative Matrix Factorization for Mutational Signatures.”</span> <a href="http://dx.doi.org/10.1101/2023.03.28.534619">http://dx.doi.org/10.1101/2023.03.28.534619</a>.
+</div>
+<div id="ref-kucab2019" class="csl-entry" role="listitem">
+Kucab, Jill E., Xueqing Zou, Sandro Morganella, Madeleine Joel, A. Scott Nanda, Eszter Nagy, Celine Gomez, et al. 2019. <span>“A Compendium of Mutational Signatures of Environmental Agents.”</span> <em>Cell</em> 177 (4): 821–836.e16. <a href="https://doi.org/10.1016/j.cell.2019.03.001">https://doi.org/10.1016/j.cell.2019.03.001</a>.
+</div>
+<div id="ref-nik-zainal2012" class="csl-entry" role="listitem">
+Nik-Zainal, Serena, Ludmil&nbsp;B. Alexandrov, David&nbsp;C. Wedge, Peter Van&nbsp;Loo, Christopher&nbsp;D. Greenman, Keiran Raine, David Jones, et al. 2012. <span>“Mutational Processes Molding the Genomes of 21 Breast Cancers.”</span> <em>Cell</em> 149 (5): 979–93. <a href="https://doi.org/10.1016/j.cell.2012.04.024">https://doi.org/10.1016/j.cell.2012.04.024</a>.
+</div>
+<div id="ref-nik-zainal2017" class="csl-entry" role="listitem">
+Nik-Zainal, Serena, and Sandro Morganella. 2017. <span>“Mutational Signatures in Breast Cancer: The Problem at the DNA Level.”</span> <em>Clinical Cancer Research</em> 23 (11): 2617–29. <a href="https://doi.org/10.1158/1078-0432.ccr-16-2810">https://doi.org/10.1158/1078-0432.ccr-16-2810</a>.
+</div>
+<div id="ref-nik-zainal2012a" class="csl-entry" role="listitem">
+Nik-Zainal, Serena, Peter Van&nbsp;Loo, David&nbsp;C. Wedge, Ludmil&nbsp;B. Alexandrov, Christopher&nbsp;D. Greenman, King&nbsp;Wai Lau, Keiran Raine, et al. 2012. <span>“The Life History of 21 Breast Cancers.”</span> <em>Cell</em> 149 (5): 994–1007. <a href="https://doi.org/10.1016/j.cell.2012.04.023">https://doi.org/10.1016/j.cell.2012.04.023</a>.
+</div>
+<div id="ref-pfeifer2010" class="csl-entry" role="listitem">
+Pfeifer, Gerd P. 2010. <span>“Environmental Exposures and Mutational Patterns of Cancer Genomes.”</span> <em>Genome Medicine</em> 2 (8): 54. <a href="https://doi.org/10.1186/gm175">https://doi.org/10.1186/gm175</a>.
+</div>
+<div id="ref-rosales2016" class="csl-entry" role="listitem">
+Rosales, Rafael A, Rodrigo D Drummond, Renan Valieris, Emmanuel Dias-Neto, and Israel T da Silva. 2016. <span>“signeR: An Empirical Bayesian Approach to Mutational Signature Discovery.”</span> Edited by Alfonso Valencia. <em>Bioinformatics</em> 33 (1): 8–16. <a href="https://doi.org/10.1093/bioinformatics/btw572">https://doi.org/10.1093/bioinformatics/btw572</a>.
+</div>
+<div id="ref-stratton2009" class="csl-entry" role="listitem">
+Stratton, Michael R., Peter J. Campbell, and P. Andrew Futreal. 2009. <span>“The Cancer Genome.”</span> <em>Nature</em> 458 (7239): 719–24. <a href="https://doi.org/10.1038/nature07943">https://doi.org/10.1038/nature07943</a>.
+</div>
+<div id="ref-tate2018" class="csl-entry" role="listitem">
+Tate, John G, Sally Bamford, Harry C Jubb, Zbyslaw Sondka, David M Beare, Nidhi Bindal, Harry Boutselakis, et al. 2018. <span>“COSMIC: The Catalogue Of Somatic Mutations In Cancer.”</span> <em>Nucleic Acids Research</em> 47 (D1): D941–47. <a href="https://doi.org/10.1093/nar/gky1015">https://doi.org/10.1093/nar/gky1015</a>.
+</div>
+<div id="ref-vanhoeck2019" class="csl-entry" role="listitem">
+Van Hoeck, Arne, Niels H. Tjoonk, Ruben van Boxtel, and Edwin Cuppen. 2019. <span>“Portrait of a Cancer: Mutational Signature Analyses for Cancer Diagnostics.”</span> <em>BMC Cancer</em> 19 (1). <a href="https://doi.org/10.1186/s12885-019-5677-2">https://doi.org/10.1186/s12885-019-5677-2</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The use positive weights for mutational signatures is different from other matrix decomposition or dictionary learning applications to genomics. For example, if we were looking at RNA-seq data, a mutational process may increase <em>or</em> decrease gene expression, so negative weights would be allowed.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,164 @@
+---
+title: "Getting Started with Mutational Signatures"
+author: "Jenna Landy"
+date: "2/9/2024"
+date-modefied: "2/9/2024"
+format:
+  html:
+    toc: true
+bibliography: references.bib
+categories: ["Mutational Signatures", "NMF", "Genomics"]
+---
+
+![](logo.png){fig-alt="A graphic of a DNA strand with a mutation in it and a bar graph underneath." fig-align="center" width="70%"}
+
+Mutational signatures model mutational processes in cancer as latent factors. This method characterizes cancer genomes in an ***interpretable*** and ***clinically relevant*** way. This article introduces the biological motivation for mutational signatures, the statistical methods used, and key literature to get you started in this field.
+
+*Referencing this post: Landy, Jenna (2024, February 9), Getting Started with Mutational Signatures, Learning the Curve.*
+
+## Biological Motivation
+
+Until recently, cancer diagnosis and treatment were based primarily on the tissue of origin, clinical presentation, and tumor morphology. The ability to sequence tumor DNA has changed this. The term "cancer" now refers to many diseases "differentiated on the basis of varying combinations of cancer gene mutations" [@vanhoeck2019].
+
+![](over_time.png){fig-alt="A graphic showing lungs, a person in pain, and a blob representing a tumor on the left (these represent how cancer diagnosis and treatment used to be based primarily on the tissue of origin, clinical presentation, and tumor morphology) with an arrow pointing to a computer with DNA on it on the right (the new approaches made possible by genome sequencing)." fig-align="center" width="70%"}
+
+Cancer is characterized by uncontrolled cell replication due to somatic mutations---mutations in non-germline cells gained through a patient's lifetime [@pfeifer2010]. There are many well-studied biological processes that lead to somatic mutations. Some processes are exogenous in origin. For example, in non-melanoma skin cancers, sunlight exposure leaves its trace through C-to-T transitions at dipyrimidine sequences and CC-to-TT tandem mutations. Similarly, in smoking-associated lung cancers, we see G-to-T transversions, particularly at methylated CpG sites in TP53 [@pfeifer2010]. Other mutational processes are endogenous in origin [@cannataro2022]. However, there are still many unknown processes that cause somatic mutations in cancer [@alexandrov2013].
+
+![](mut_process.png){fig-alt="A graphic showing a ray from the sun causing a mutation in the DNA, which then causes uncontrolled cell growth." fig-align="center" width="70%"}
+
+Though mutational signatures hadn't yet been defined, Stratton, Cambelle, & Futreal perfectly summarized their biological motivation in 2009 [@stratton2009]:
+
+> the catalogue of somatic mutations present in a cancer cell ... represents a cumulative archaeological record of all the mutational processes the cancer cell has experienced throughout the lifetime of the patient. It provides a rich, and predominantly unmined, source of information for cancer epidemiologists and biologists with which to interrogate the development of individual tumors
+
+Mutational signatures analysis models a tumor's mutational landscape as the composition of multiple mutational processes working at once.
+
+![](mut_landscape.png){fig-alt="A graphic showing the sun, a cigarette, and an unknown mutational process all contributing to the mutational composition of the tumor." fig-align="center" width="70%"}
+
+## Defining Mutational Signatures
+
+### Data: Mutational Catalog $M$
+
+Most signatures work focuses on single base substitution (SBS) mutations, though signatures have also been developed for double base substitutions, small insertions and deletions, copy number variations, structural variation, and RNA single base substitutions [@tate2018].
+
+For SBSs, a "type" of mutation is defined by the change in the sequence and the nucleotides on either side. For instance, a sequence ACT mutated to AGT has a C\>T substitution (the mutation) with an A on the left and a T on the right (the context). We represent this mutation type as "A\[C\>G\]T".
+
+In the simplest case, we're not concerned with which DNA strand the mutation was on, so we only consider substitutions at a C or a T. This gives six options for the substitution (C\>A, C\>G, C\>T, T\>A, T\>C, T\>G) and four options each for the nucleotides on the left and right, so a total of $6 \times 4 \times 4$ = ***96 SBS mutation types***. We use base-pair matching to convert mutations at a G or an A into one of these 96 types.
+
+A tumor's ***mutational catalog*** is how often each mutation type appears across its genome. The catalog for each tumor genome $g$, $M_{g}$, is a vector of length 96. The full mutational catalog matrix $M$ has dimension 96 x G where G is the total number of tumor genomes, and tumors' catalogs are the columns.
+
+::: {style="text-align: center; font-weight: bold;"}
+$M$ = mutational catalog matrix, our observed data
+
+$M_{kg}$ = count of mutation type $k$ in tumor genome $g$
+:::
+
+![](M_matrix.png){fig-alt="A graphic showing an example mutational catalog matrix on a computer screen. The rows are labelled with mutation types and columns are labelled \"Sample 1\",...,\"Sample G\"." fig-align="center" width="70%"}
+
+### Latent Factors: Mutational Signatures $P$
+
+A **mutational signature** is a mathematical representation of a mutational process defining **how likely the mutational process is to give rise to each type of mutation**. Mathematically, signature $n$, denoted $P_n$, is a probability distribution over these mutation types. The complete signatures matrix $P$ has dimension 96 x N where N is the total number of signatures, and signatures are columns.
+
+::: {style="text-align: center; font-weight: bold;"}
+$P$ = signature matrix, our latent factors representing mutational processes
+
+$P_{kn}$ = probability of mutation type $k$ resulting from mutational signature $n$
+
+$P_{kn}$ = Pr(mutation type k \| signature n) such that $\sum_k P_{kn} = 1 \forall n$
+:::
+
+A common way to visualize individual signatures is as a bar plot of these probabilities, grouped based on the central mutation, where each group has 16 options for the left and right nucleotide context. Below is this type of plot for one signature, [COSMIC SBS3](https://cancer.sanger.ac.uk/signatures/sbs/sbs3/).
+
+::: {style="text-align: center;"}
+![COSMIC SBS3 GRCh37 (signatures v3.4). Identified in @nik-zainal2012.](SBS3.jpg){fig-alt="A bar chart of a single mutational signature." fig-align="center" width="70%"}
+:::
+
+## Statistical Methods
+
+In order to model mutational signatures, we need to convert our biological motivation about mutational processes into a mathematical expression using our mathematical definition of mutational signatures.
+
+Biologically, we said
+
+> *a tumor's mutational landscape is the composition of multiple mutational processes working at once*.
+
+Mathematically, we can say
+
+> *a tumor's mutational catalog is a linear combination of multiple mutational signatures*.
+
+The weights of this linear combination are defined by a matrix $E$, where ${E}_{ng}$ is the **number of mutations** in tumor genome $g$ attributed to mutational signature $n$. $E_{ng}$ is often called the **exposure** of tumor genome $g$ to mutational signature $n$ or, equivalently, the **contribution** of mutational signature $n$ to tumor genome $g$. This definition gives rise to the following matrix factorization problem:
+
+$$
+\begin{aligned}
+M_g =& \sum_n P_n E_{ng}\\
+M = PE, &\text{ all non-negative}.
+\end{aligned}
+$$
+
+A necessary restriction is that all our matrices of interest, $M$, $P$, and $E$ have non-negative values. The non-negativity constraint is trivial for the first two because $M$ is a counts matrix and $P$ a matrix of probabilities. The choice for $E$ to be non-negative comes from the biology behind signatures: mutational processes can only add mutations, not get rid of them[^1], so these weights must be positive as well.
+
+[^1]: The use positive weights for mutational signatures is different from other matrix decomposition or dictionary learning applications to genomics. For example, if we were looking at RNA-seq data, a mutational process may increase *or* decrease gene expression, so negative weights would be allowed.
+
+This matrix factorization has scale non-identifiability because $M = PE$ and $M = (P/2)(2E)$ are equivalent solutions. For this reason, we can drop the restriction that $\sum_k P_{kn} = 1 \forall n$ and rescale the solution after the fact.
+
+![](nmf.png){fig-alt="A graphic showing the matrix decomposition for M = PE, with label \"mutational catalog = signatures times exposures\"." fig-align="center" width="70%"}
+
+**Non-negative matrix factorization (NMF)** is a widely used approach for this type of problem. R and Python packages can be used to run NMF on your local computer easily. The example below shows in each language (1) generating a mutational catalog matrix $M$ with $G$ = 20 samples and no true signal from latent factors and (2) performing NMF and extracting final estimates $\hat P$ and $\hat E$.
+
+::: panel-tabset
+## Python
+
+```{python}
+from sklearn.decomposition import NMF
+import numpy as np
+import pandas as pd
+
+K = 96
+G = 20
+lam = 10
+rank = 4
+
+
+M = np.random.poisson(lam = lam, size = [K, G])
+
+model = NMF(n_components = rank)
+P_hat = model.fit_transform(M)
+E_hat = model.components_
+```
+
+## R
+
+```{r message = FALSE}
+library(NMF)
+
+K <- 96
+G <- 20
+lambda <- 10
+rank <- 4
+
+M <- matrix(
+    rpois(n = K*G, lambda = lambda), 
+    nrow = K, ncol = G
+)
+
+nmf_res <- NMF::nmf(M, rank = rank)
+P_hat <- nmf_res@fit@W
+E_hat <- nmf_res@fit@H
+```
+:::
+
+A separate post with the details of this algorithm and its variations is in progress.
+
+## Key Literature
+
+This is a set of papers that I found very useful to get a solid footing in this field. This is by no means a comprehensive list of all mutational signatures analysis methods or applications.
+
+@nik-zainal2012 was the first paper to perform mutational signatures analysis as we described above. They looked at the mutational catalogs of 21 breast cancer genomes to extract five mutational signatures. They report a signature that \"is likely due to deamination of 5-methylcytosine, a relatively well-characterized mutational process\", while the rest had unknown origins. Its companion paper [@nik-zainal2012a] divides somatic mutations into those shared by all cells in the sample and those that are subclonal. By classifying whether mutations were early clonal, late clonal, or subclonal in regions of copy number gains, they are able to assess the relative contributions of the five signatures at different times during each cancer\'s evolution.
+
+@alexandrov2013a extends these methods into a reproducible framework. They apply this framework to a mutational catalog matrix with samples from 30 different types of cancer and reveal 21 distinct signatures. Some signatures are observed in only one or a subset of cancer types, while others are shared.
+
+@fischer2013 further extends the NMF methods to incorporate mutational opportunity and uses a probabilistic form of NMF solved using the expectation maximization (EM) algorithm rather than gradient descent. @rosales2016 uses Bayesian NMF and introduces the idea of a differential exposure score associating exposures with clinical data to see how the activity of each signature correlates to clinical results. They also show that the exposure matrix can be used to cluster tumor samples into clinically meaningful subtypes.
+
+@nik-zainal2017 again compares mutational signatures across cancer types and indicates the need for multi-study and multi-cancer methods. @grabski2023 satisfies this need with a Bayesian NMF approach that can jointly analyze multiple mutational catalog matrices, such as different studies or cancer types. This method allows for signatures to be specific to one study or shared by any number of studies.
+
+@tate2018 introduces [COSMIC: the Catalogue Of Somatic Mutations In Cancer](https://cancer.sanger.ac.uk/signatures/), a resource kept up to date with the most recently discovered mutational signatures, their proposed etiology, and the cancer types they impact. SBS signatures can be found [here](https://cancer.sanger.ac.uk/signatures/sbs/) and can easily be downloaded for use in analysis. COSMIC has been updated since, most recently with analysis from @alexandrov2020.
+
+Other important references include @baez-ortega2017, which reviews various mathematical models and computational techniques for mutational signature analysis, and @kucab2019, which experimentally validates the link between certain mutagens and mutational signatures. @vanhoeck2019 describes the status of mutational signature analysis and discusses future challenges.

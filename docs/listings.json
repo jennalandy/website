@@ -11,5 +11,11 @@
       "/projects/success/success.html",
       "/projects/jupyter_research/jupyter_research.html"
     ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog_posts/intro_to_signatures/intro_to_signatures.html"
+    ]
   }
 ]
