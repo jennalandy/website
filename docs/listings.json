@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/blog.html",
+    "items": [
+      "/blog_posts/intro_to_signatures/intro_to_signatures.html"
+    ]
+  },
+  {
     "listing": "/research.html",
     "items": [
       "/projects/gridsemble/gridsemble.html",
@@ -10,12 +16,6 @@
       "/projects/mt_augment_pos/mt_augment_pos.html",
       "/projects/success/success.html",
       "/projects/jupyter_research/jupyter_research.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/blog_posts/intro_to_signatures/intro_to_signatures.html"
     ]
   }
 ]
