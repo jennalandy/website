@@ -14,7 +14,7 @@ categories: ["Mutational Signatures", "NMF", "Genomics"]
 
 Mutational signatures model mutational processes in cancer as latent factors. This method characterizes cancer genomes in an ***interpretable*** and ***clinically relevant*** way. This article introduces the biological motivation for mutational signatures, the statistical methods used, and key literature to get you started in this field.
 
-*Referencing this post: Landy, Jenna (2024, February 9), Getting Started with Mutational Signatures, Learning the Curve.*
+[Referencing this post]{.underline}: Landy, Jenna, "Getting Started with Mutational Signatures", *Learning the Curve*, February 9, 2024.
 
 ## Biological Motivation
 

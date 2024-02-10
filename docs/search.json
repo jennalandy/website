@@ -60,7 +60,7 @@
     "href": "blog_posts/intro_to_signatures/intro_to_signatures.html",
     "title": "Getting Started with Mutational Signatures",
     "section": "",
-    "text": "Mutational signatures model mutational processes in cancer as latent factors. This method characterizes cancer genomes in an interpretable and clinically relevant way. This article introduces the biological motivation for mutational signatures, the statistical methods used, and key literature to get you started in this field.\nReferencing this post: Landy, Jenna (2024, February 9), Getting Started with Mutational Signatures, Learning the Curve."
+    "text": "Mutational signatures model mutational processes in cancer as latent factors. This method characterizes cancer genomes in an interpretable and clinically relevant way. This article introduces the biological motivation for mutational signatures, the statistical methods used, and key literature to get you started in this field.\nReferencing this post: Landy, Jenna, “Getting Started with Mutational Signatures”, Learning the Curve, February 9, 2024."
   },
   {
     "objectID": "blog_posts/intro_to_signatures/intro_to_signatures.html#biological-motivation",
