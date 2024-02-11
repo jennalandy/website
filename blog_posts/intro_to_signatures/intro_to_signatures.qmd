@@ -40,7 +40,7 @@ Mutational signatures analysis models a tumor's mutational landscape as the comp
 
 Most signatures work focuses on single base substitution (SBS) mutations, though signatures have also been developed for double base substitutions, small insertions and deletions, copy number variations, structural variation, and RNA single base substitutions [@tate2018].
 
-For SBSs, a "type" of mutation is defined by the change in the sequence and the nucleotides on either side. For instance, a sequence ACT mutated to AGT has a C\>T substitution (the mutation) with an A on the left and a T on the right (the context). We represent this mutation type as "A\[C\>G\]T".
+For SBSs, a "type" of mutation is defined by the change in the sequence and the nucleotides on either side. For instance, a sequence ACT mutated to AGT has a C\>G substitution (the mutation) with an A on the left and a T on the right (the context). We represent this mutation type as "A\[C\>G\]T".
 
 In the simplest case, we're not concerned with which DNA strand the mutation was on, so we only consider substitutions at a C or a T. This gives six options for the substitution (C\>A, C\>G, C\>T, T\>A, T\>C, T\>G) and four options each for the nucleotides on the left and right, so a total of $6 \times 4 \times 4$ = ***96 SBS mutation types***. We use base-pair matching to convert mutations at a G or an A into one of these 96 types.
 
