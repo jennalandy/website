@@ -5,6 +5,7 @@ project:
 website:
   title: "Jenna Landy"
   favicon: images/Logo.png
+  google-analytics: "G-XYB11TP0SE"
   navbar:
     left:
       - text: Home
