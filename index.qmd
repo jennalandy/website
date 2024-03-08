@@ -23,5 +23,5 @@ Hello! I'm a Ph.D. student in Biostatistics at Harvard and graduated with a B.S.
 -   I have just started a [blog](blog.qmd) called "Learning The Curve" where I will post tutorial-style content for methods I'm interested in.
 
 ```{=html}
-<a href="files/JENNALANDY_CV.pdf" view>View my CV here</a>
+<a href="files/JENNALANDY_CV.pdf" view>View my CV here.</a>
 ```
