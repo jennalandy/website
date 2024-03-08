@@ -21,3 +21,7 @@ Hello! I'm a Ph.D. student in Biostatistics at Harvard and graduated with a B.S.
 -   I develop publicly available [software](software.qmd) for every project to encourage the reproducibility and usability of my work.
 -   I am passionate about the creation and accessibility of educational [resources](resources.qmd) for statistics and data science.
 -   I have just started a [blog](blog.qmd) called "Learning The Curve" where I will post tutorial-style content for methods I'm interested in.
+
+```{=html}
+<a href="files/JENNALANDY_CV.pdf" view>View my CV here</a>
+```
