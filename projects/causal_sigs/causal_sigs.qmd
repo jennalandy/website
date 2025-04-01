@@ -1,8 +1,8 @@
 ---
-title: "Bayesian Causal Inference for Cancer Mutational Signatures"
+title: "Causal Inference for Cancer Mutational Signatures"
 author: "Jenna Landy"
 date: "5/1/2023"
-date-modefied: "2/1/2024"
+date-modefied: "4/1/2025"
 categories: ["IN PROGRESS", "mutational signatures", "causal inference", "bayesian computation", "genomics"]
 ---
 

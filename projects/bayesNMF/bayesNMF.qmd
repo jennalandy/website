@@ -1,18 +1,17 @@
 ---
-title: "A Comparative Analysis of Bayesian NMF Models"
+title: "bayesNMF: Fast Bayesian Poisson NMF with Automatically Learned Rank Applied to Mutational Signatures"
 author: "Jenna Landy"
-date: "12/1/2023"
-date-modefied: "2/1/2024"
-categories: ["IN PROGRESS", "bayesian computation", "mutational signatures", "genomics"]
+date: "2/25/2025"
+date-modefied: "4/1/2025"
+categories: ["bayesian computation", "mutational signatures", "genomics"]
 ---
 
-While many Bayesian non-negative matrix factorization (NMF) models have been proposed, there has yet to be a comprehensive comparison of their relative performances and computational requirements. Further, there is no open-source software to easily fit some of these models.
+Landy, Jenna M., Nishanth Basava, and Giovanni Parmigiani. "bayesNMF: Fast Bayesian Poisson NMF with Automatically Learned Rank Applied to Mutational Signatures." *arXiv preprint [arXiv:2502.18674](https://arxiv.org/abs/2502.18674)* (2025).
 
-I am developing an R software package, [bayesNMF](https://github.com/jennalandy/bayesNMF), that implements various model specifications of Bayesian NMF. I also include the option to learn the latent rank as a part of the Bayesian model. I am comparing these models in terms of reconstruction error, correctness of the learned latent factors (in simulation studies), memory usage, and speed.
+Bayesian Non-Negative Matrix Factorization (NMF) is a method of interest across fields including genomics, neuroscience, and audio and image processing. Bayesian Poisson NMF is of particular importance for counts data, for example in cancer mutational signatures analysis. However, MCMC methods for Bayesian Poisson NMF require a computationally intensive augmentation. Further, identifying latent rank is necessary, but commonly used heuristic approaches are slow and potentially subjective, and methods that learn rank automatically are unable to provide posterior uncertainties. **In this paper, we introduce bayesNMF, a computationally efficient Gibbs sampler for Bayesian Poisson NMF.** The desired Poisson-likelihood NMF is paired with a Normal-likelihood NMF used for high overlap proposal distributions in approximate Metropolis steps, avoiding augmentation. **We additionally define Bayesian factor inclusion (BFI) and sparse Bayesian factor inclusion (SBFI) as methods to identify rank automatically while preserving posterior uncertainty quantification on the learned matrices.** We provide an open-source R software package with all models and plotting capabilities demonstrated in this paper on GitHub at [jennalandy/bayesNMF](https://github.com/jennalandy/bayesNMF). While our applications focus on mutational signatures, our software and results can be extended to any use of Bayesian Poisson NMF
 
 ------------------------------------------------------------------------
 
 Advised by Giovanni Parmigiani, PhD\
 Department of Data Science, Dana Farber Cancer Institute\
 Department of Biostatistics, Harvard T.H. Chan School of Public Health
-

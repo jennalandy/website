@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jenna Landy - My Research</title>
+<title>My Research – Jenna Landy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -101,8 +108,35 @@ gtag('js', new Date());
 gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -110,44 +144,44 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Jenna Landy</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./research.html" rel="" target="" aria-current="page">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link active" href="./research.html" aria-current="page"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html" rel="" target="">
- <span class="menu-text">Software</span></a>
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html" rel="" target="">
- <span class="menu-text">Resources</span></a>
+    <a class="nav-link" href="./resources.html"> 
+<span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html" rel="" target="">
- <span class="menu-text">My Blog: Learning The Curve</span></a>
+    <a class="nav-link" href="./blog.html"> 
+<span class="menu-text">My Blog: Learning The Curve</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -160,7 +194,7 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -173,9 +207,10 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="IN PROGRESS">IN PROGRESS <span class="quarto-category-count">(4)</span></div><div class="category" data-category="NLP">NLP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bayesian computation">bayesian computation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="causal inference">causal inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep learning">deep learning <span class="quarto-category-count">(3)</span></div><div class="category" data-category="genomics">genomics <span class="quarto-category-count">(5)</span></div><div class="category" data-category="multiple hypothesis testing">multiple hypothesis testing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mutational signatures">mutational signatures <span class="quarto-category-count">(3)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="IN PROGRESS">IN PROGRESS <span class="quarto-category-count">(3)</span></div><div class="category" data-category="NLP">NLP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bayesian computation">bayesian computation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="causal inference">causal inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deep learning">deep learning <span class="quarto-category-count">(3)</span></div><div class="category" data-category="genomics">genomics <span class="quarto-category-count">(5)</span></div><div class="category" data-category="multiple hypothesis testing">multiple hypothesis testing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mutational signatures">mutational signatures <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
 
 
 
@@ -213,61 +248,20 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="multiple hypothesis testing,genomics" data-listing-date-sort="1705986000000" data-listing-file-modified-sort="1707241245355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="0" data-categories="bayesian computation,mutational signatures,genomics" data-listing-date-sort="1740459600000" data-listing-file-modified-sort="1743533462774" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228">
 <div class="thumbnail">
-<p><a href="./projects/gridsemble/gridsemble.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/bayesNMF/bayesNMF.html" class="no-external"></a></p><a href="./projects/bayesNMF/bayesNMF.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/bayesNMF/bayesNMF.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/gridsemble/gridsemble.html">
 <h3 class="no-anchor listing-title">
-Gridsemble: Selective Ensembling for False Discovery Rates
+<a href="./projects/bayesNMF/bayesNMF.html" class="no-external">bayesNMF: Fast Bayesian Poisson NMF with Automatically Learned Rank Applied to Mutational Signatures</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/bayesNMF/bayesNMF.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('multiple hypothesis testing'); return false;">
-multiple hypothesis testing
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('genomics'); return false;">
-genomics
-</div>
-</div>
-<a href="./projects/gridsemble/gridsemble.html">
-<div class="listing-description">
-<strong>Landy, Jenna M.</strong>, and Parmigiani, Giovanni. “Gridsemble: Selective Ensembling for False Discovery Rates.” <em>arXiv preprint arXiv:2401.12865</em> (2024).
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./projects/gridsemble/gridsemble.html">
-<div class="listing-date">
-Jan 23, 2024
-</div>
-<div class="listing-author">
-Jenna Landy
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="IN PROGRESS,bayesian computation,mutational signatures,genomics" data-listing-date-sort="1701406800000" data-listing-file-modified-sort="1707241234627" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./projects/bayesNMF/bayesNMF.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./projects/bayesNMF/bayesNMF.html">
-<h3 class="no-anchor listing-title">
-A Comparative Analysis of Bayesian NMF Models
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('IN PROGRESS'); return false;">
-IN PROGRESS
-</div>
 <div class="listing-category" onclick="window.quartoListingCategory('bayesian computation'); return false;">
 bayesian computation
 </div>
@@ -278,16 +272,14 @@ mutational signatures
 genomics
 </div>
 </div>
-<a href="./projects/bayesNMF/bayesNMF.html">
 <div class="listing-description">
-While many Bayesian non-negative matrix factorization (NMF) models have been proposed, there has…
+<a href="./projects/bayesNMF/bayesNMF.html" class="no-external">Landy, Jenna M., Nishanth Basava, and Giovanni Parmigiani. “bayesNMF: Fast Bayesian Poisson NMF with Automatically Learned Rank Applied to Mutational Signatures.” <em>arXiv…</em></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/bayesNMF/bayesNMF.html">
+<a href="./projects/bayesNMF/bayesNMF.html" class="no-external">
 <div class="listing-date">
-Dec 1, 2023
+Feb 25, 2025
 </div>
 <div class="listing-author">
 Jenna Landy
@@ -295,19 +287,55 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="IN PROGRESS,deep learning,genomics" data-listing-date-sort="1698811200000" data-listing-file-modified-sort="1707181376975" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="1" data-categories="multiple hypothesis testing,genomics" data-listing-date-sort="1705986000000" data-listing-file-modified-sort="1736965376317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="133">
 <div class="thumbnail">
-<p><a href="./projects/perturb_gnn/perturb_gnn.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/gridsemble/gridsemble.html" class="no-external"></a></p><a href="./projects/gridsemble/gridsemble.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/gridsemble/gridsemble.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/perturb_gnn/perturb_gnn.html">
 <h3 class="no-anchor listing-title">
-A Transferable GNN for Perturb-Seq
+<a href="./projects/gridsemble/gridsemble.html" class="no-external">Gridsemble: Selective Ensembling for False Discovery Rates</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/gridsemble/gridsemble.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('multiple hypothesis testing'); return false;">
+multiple hypothesis testing
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('genomics'); return false;">
+genomics
+</div>
+</div>
+<div class="listing-description">
+<a href="./projects/gridsemble/gridsemble.html" class="no-external"><strong>Landy, Jenna M.</strong>, and Parmigiani, Giovanni. “Gridsemble: Selective Ensembling for False Discovery Rates.” <em>arXiv preprint arXiv:2401.12865</em> (2024).</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/gridsemble/gridsemble.html" class="no-external">
+<div class="listing-date">
+Jan 23, 2024
+</div>
+<div class="listing-author">
+Jenna Landy
 </div>
 </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="IN PROGRESS,deep learning,genomics" data-listing-date-sort="1698811200000" data-listing-file-modified-sort="1736965376319" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
+<div class="thumbnail">
+<p><a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external"></a></p><a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external">A Transferable GNN for Perturb-Seq</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external"></a>
+</div>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('IN PROGRESS'); return false;">
 IN PROGRESS
@@ -319,14 +347,12 @@ deep learning
 genomics
 </div>
 </div>
-<a href="./projects/perturb_gnn/perturb_gnn.html">
 <div class="listing-description">
-CRISPR can be used to knock out a particular gene, or “perturb” it, so that it is no longer functional. Single cell RNA sequencing on perturbed and control cells…
+<a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external">CRISPR can be used to knock out a particular gene, or “perturb” it, so that it is no longer functional. Single cell RNA sequencing on perturbed and control cells…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/perturb_gnn/perturb_gnn.html">
+<a href="./projects/perturb_gnn/perturb_gnn.html" class="no-external">
 <div class="listing-date">
 Nov 1, 2023
 </div>
@@ -336,19 +362,19 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="IN PROGRESS,mutational signatures,causal inference,bayesian computation,genomics" data-listing-date-sort="1682913600000" data-listing-file-modified-sort="1707241288165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="3" data-categories="IN PROGRESS,mutational signatures,causal inference,bayesian computation,genomics" data-listing-date-sort="1682913600000" data-listing-file-modified-sort="1736965376316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
 <div class="thumbnail">
-<p><a href="./projects/causal_sigs/causal_sigs.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/causal_sigs/causal_sigs.html" class="no-external"></a></p><a href="./projects/causal_sigs/causal_sigs.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/causal_sigs/causal_sigs.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/causal_sigs/causal_sigs.html">
 <h3 class="no-anchor listing-title">
-Bayesian Causal Inference for Cancer Mutational Signatures
+<a href="./projects/causal_sigs/causal_sigs.html" class="no-external">Bayesian Causal Inference for Cancer Mutational Signatures</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/causal_sigs/causal_sigs.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('IN PROGRESS'); return false;">
 IN PROGRESS
@@ -366,14 +392,12 @@ bayesian computation
 genomics
 </div>
 </div>
-<a href="./projects/causal_sigs/causal_sigs.html">
 <div class="listing-description">
-Mutational signatures analysis is a quickly growing field to model…
+<a href="./projects/causal_sigs/causal_sigs.html" class="no-external">Mutational signatures analysis is a quickly growing field to model mutational processes in tumor genomes. Computationally-derived mutational signatures have been associated…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/causal_sigs/causal_sigs.html">
+<a href="./projects/causal_sigs/causal_sigs.html" class="no-external">
 <div class="listing-date">
 May 1, 2023
 </div>
@@ -383,19 +407,19 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="IN PROGRESS,deep learning,mutational signatures,genomics" data-listing-date-sort="1682913600000" data-listing-file-modified-sort="1707241287070" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="4" data-categories="IN PROGRESS,deep learning,mutational signatures,genomics" data-listing-date-sort="1682913600000" data-listing-file-modified-sort="1736965376320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="81">
 <div class="thumbnail">
-<p><a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external"></a></p><a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html">
 <h3 class="no-anchor listing-title">
-Deep Unfolding Bayesian Non-Negative Matrix Factorization
+<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external">Deep Unfolding Bayesian Non-Negative Matrix Factorization</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('IN PROGRESS'); return false;">
 IN PROGRESS
@@ -410,14 +434,12 @@ mutational signatures
 genomics
 </div>
 </div>
-<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html">
 <div class="listing-description">
-Bayesian non-negative matrix factorization is a method used across fields including genomics, audio and signal processing, and neuroscience. The complexity of the posterior…
+<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external">Bayesian non-negative matrix factorization is a method used across fields including genomics, audio and signal processing, and neuroscience. The complexity of the posterior…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html">
+<a href="./projects/unfolding_bayesNMF/unfolding_bayesNMF.html" class="no-external">
 <div class="listing-date">
 May 1, 2023
 </div>
@@ -427,19 +449,19 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="deep learning,NLP" data-listing-date-sort="1646110800000" data-listing-file-modified-sort="1707241290218" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="5" data-categories="deep learning,NLP" data-listing-date-sort="1646110800000" data-listing-file-modified-sort="1736965376318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="155">
 <div class="thumbnail">
-<p><a href="./projects/mt_augment_pos/mt_augment_pos.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external"></a></p><a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/mt_augment_pos/mt_augment_pos.html">
 <h3 class="no-anchor listing-title">
-Part of Speech-Based Data Augmentation for Neural Machine Translation
+<a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external">Part of Speech-Based Data Augmentation for Neural Machine Translation</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('deep learning'); return false;">
 deep learning
@@ -448,14 +470,12 @@ deep learning
 NLP
 </div>
 </div>
-<a href="./projects/mt_augment_pos/mt_augment_pos.html">
 <div class="listing-description">
-Data augmentation improves accuracy of ML models for natural…<em></em><em></em>
+<a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external">Data augmentation improves accuracy of ML models for natural language processing tasks, such as neural machine translation (NMT), by increasing the amount and variety of…<em></em><em></em></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/mt_augment_pos/mt_augment_pos.html">
+<a href="./projects/mt_augment_pos/mt_augment_pos.html" class="no-external">
 <div class="listing-date">
 Mar 1, 2022
 </div>
@@ -465,25 +485,25 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1592193600000" data-listing-file-modified-sort="1707241291242" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1592193600000" data-listing-file-modified-sort="1736965376319" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
 <div class="thumbnail">
-<p><a href="./projects/success/success.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/success/success.html" class="no-external"></a></p><a href="./projects/success/success.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/success/success.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/success/success.html">
 <h3 class="no-anchor listing-title">
-Studying Underlying Characteristics of Computing and Engineering Student Success (SUCCESS)
+<a href="./projects/success/success.html" class="no-external">Studying Underlying Characteristics of Computing and Engineering Student Success (SUCCESS)</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/success/success.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I was a statistical consultant research assistant on the SUCCESS project, a collaboration between Cal Poly San Luis Obispo and Purdue University. In this role, I analyzed…
+<a href="./projects/success/success.html" class="no-external">I was a statistical consultant research assistant on the SUCCESS project, a collaboration between Cal Poly San Luis Obispo and Purdue University. In this role, I analyzed…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/success/success.html">
+<a href="./projects/success/success.html" class="no-external">
 <div class="listing-date">
 Jun 15, 2020
 </div>
@@ -493,25 +513,25 @@ Jenna Landy
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1567310400000" data-listing-file-modified-sort="1707182157210" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1567310400000" data-listing-file-modified-sort="1736965376317" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
 <div class="thumbnail">
-<p><a href="./projects/jupyter_research/jupyter_research.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
+<p><a href="./projects/jupyter_research/jupyter_research.html" class="no-external"></a></p><a href="./projects/jupyter_research/jupyter_research.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./projects/jupyter_research/jupyter_research.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./projects/jupyter_research/jupyter_research.html">
 <h3 class="no-anchor listing-title">
-Public GitHub Notebook Corpus Research
+<a href="./projects/jupyter_research/jupyter_research.html" class="no-external">Public GitHub Notebook Corpus Research</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./projects/jupyter_research/jupyter_research.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-This was my independent research project as a data science intern at Amazon Web Services (AWS) in 2019. This work is available on Project Jupyter’s GitHub.
+<a href="./projects/jupyter_research/jupyter_research.html" class="no-external">This was my independent research project as a data science intern at Amazon Web Services (AWS) in 2019. This work is available on Project Jupyter’s GitHub.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./projects/jupyter_research/jupyter_research.html">
+<a href="./projects/jupyter_research/jupyter_research.html" class="no-external">
 <div class="listing-date">
 Sep 1, 2019
 </div>
@@ -561,18 +581,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -604,11 +613,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -618,8 +666,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -631,7 +688,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -675,6 +855,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -700,6 +881,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -760,6 +967,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

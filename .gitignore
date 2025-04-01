@@ -3,6 +3,6 @@ website.Rproj
 .Rhistory
 .Rproj.user/
 .quarto/
-blog_drafts/*
+_blog_drafts/*
 
 /.quarto/
