@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jenna Landy">
-<meta name="dcterms.date" content="2023-05-01">
+<meta name="dcterms.date" content="2025-06-28">
 
-<title>Bayesian Causal Inference for Cancer Mutational Signatures – Jenna Landy</title>
+<title>Causal Inference for Cancer Mutational Signatures – Jenna Landy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,12 +137,10 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bayesian Causal Inference for Cancer Mutational Signatures</h1>
+<h1 class="title">Causal Inference for Cancer Mutational Signatures</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">IN PROGRESS</div>
     <div class="quarto-category">mutational signatures</div>
     <div class="quarto-category">causal inference</div>
-    <div class="quarto-category">bayesian computation</div>
     <div class="quarto-category">genomics</div>
   </div>
   </div>
@@ -161,7 +159,7 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 1, 2023</p>
+      <p class="date">June 28, 2025</p>
     </div>
   </div>
   
@@ -173,10 +171,10 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 </header>
 
 
-<p>Mutational signatures analysis is a quickly growing field to model mutational processes in tumor genomes. Computationally-derived mutational signatures have been associated with known mutational pathways, including DNA damage repair deficiencies (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8752981/">Jeong et al.&nbsp;2021</a>) and deamination of 5-methylcytosine (<a href="https://www.cell.com/fulltext/S0092-8674(12)00528-4">Nik-Zainal et al.&nbsp;2012</a>), as well as known carcinogens, including tobacco smoking and ultraviolet radiation (<a href="https://genomemedicine.biomedcentral.com/articles/10.1186/gm175">Pfeifer 2010</a>). This new way to characterize tumors has the potential to uncover yet unidentified mutational processes.</p>
-<p>We are looking at mutational signatures through the lens of causal inference to answer questions about the <em>causal</em> effects of such exposures on the presence and magnitude of mutational signatures in cancer genomes. Using mutational signatures (or any latent factor) as an outcome in the causal inference framework comes with many challenges.</p>
+<p>Jenna M. Landy, Dafne Zorzetto, Roberta De Vito, Giovanni Parmigiani. “Causal Inference for Latent Outcomes Learned with Factor Models.” <em>arXiv preprint</em> <a href="https://arxiv.org/abs/2506.20549">2506.20549</a> (2025).</p>
+<p>In many fields—including genomics, epidemiology, natural language processing, social and behavioral sciences, and economics—it is increasingly important to address causal questions in the context of factor models or representation learning. In this work, we investigate causal effects on <em>latent outcomes</em> derived from high-dimensional observed data using nonnegative matrix factorization. To the best of our knowledge, this is the first study to formally address causal inference in this setting. A central challenge is that estimating a latent factor model can cause an individual’s learned latent outcome to depend on other individuals’ treatments, thereby violating the standard causal inference assumption of no interference. We formalize this issue as <em>learning-induced interference</em> and distinguish it from interference present in a data-generating process. To address this, we propose a novel, intuitive, and theoretically grounded algorithm to estimate causal effects on latent outcomes while mitigating learning-induced interference and improving estimation efficiency. We establish theoretical guarantees for the consistency of our estimator and demonstrate its practical utility through simulation studies and an application to cancer mutational signature analysis. All baseline and proposed methods are available in our open-source R package, <a href="https://github.com/jennalandy/causalLFO"><em>causalLFO</em></a>.</p>
 <hr>
-<p>Advised by Giovanni Parmigiani, PhD and Nima Hejazi, PhD<br>
+<p>Advised by Giovanni Parmigiani, PhD<br>
 Department of Data Science, Dana Farber Cancer Institute<br>
 Department of Biostatistics, Harvard T.H. Chan School of Public Health</p>
 

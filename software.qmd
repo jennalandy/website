@@ -8,6 +8,10 @@ I hope that including open-source software with each project I work on helps my 
 
 ### R Packages
 
+-   [causalLFO](https://github.com/jennalandy/causalLFO): an R package to perform causal inference for latent outcomes learned with non-negative matrix factorization with uncertainty quantification.
+
+<!-- -->
+
 -   [bayesNMF](https://github.com/jennalandy/bayesNMF): an R package for fitting Bayesian Non-Negative Matrix Factorization (NMF) with a variety of modeling specifications and the option to learn latent rank as part of the Bayesian model.
 
 -   [gridsemblefdr](https://github.com/jennalandy/gridsemblefdr): an R package for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing.
