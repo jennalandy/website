@@ -1,0 +1,19 @@
+---
+title: "fdrSAFE: Selective Aggregation for Local False Discovery Rate Estimation"
+author: "Jenna Landy"
+date: "1/23/2024"
+date-modefied: "11/24/2025"
+categories: ["multiple hypothesis testing", "genomics"]
+---
+
+**Citation:** [Jenna M. Landy]{.underline} and Giovanni Parmigiani. "fdrSAFE: Selective Aggregation for Local False Discovery Rate Estimation." *arXiv preprint [arXiv:2401.12865](https://arxiv.org/abs/2401.12865)* (2024).
+
+**R Software Package**: [fdrSAFE](https://github.com/jennalandy/fdrSAFE)
+
+Estimating local false discovery rates (fdr) is central to large-scale multiple hypothesis testing, yet different methods often produce divergent results, and there is little guidance for selecting among them. Because ground truth hypothesis labels are unobservable, standard model selection cannot be used. We present fdrSAFE (selective aggregation for fdr estimation), a data-driven selective ensembling approach that estimates model performances on synthetic datasets designed to resemble the observed data but with known ground truth. With simulation studies and an experimental spike-in transcriptomic dataset, we show that fdrSAFE achieves robust near-optimality, performing well across diverse settings where baseline model performances vary. Along with improved fdr estimates, this framework enhances replicability by replacing arbitrary model choice with a principled, data-adaptive procedure. An open-source R software package is available on GitHub at [jennalandy/fdrSAFE](https://github.com/jennalandy/fdrSAFE).
+
+------------------------------------------------------------------------
+
+Advised by Giovanni Parmigiani, PhD\
+Department of Data Science, Dana Farber Cancer Institute\
+Department of Biostatistics, Harvard T.H. Chan School of Public Health

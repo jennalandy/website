@@ -7,6 +7,8 @@ format:
   html:
     toc: true
 bibliography: references.bib
+execute:
+  enabled: false
 categories: ["Mutational Signatures", "NMF", "Genomics"]
 ---
 

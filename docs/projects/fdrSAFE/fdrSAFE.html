@@ -9,7 +9,7 @@
 <meta name="author" content="Jenna Landy">
 <meta name="dcterms.date" content="2024-01-23">
 
-<title>Gridsemble: Selective Ensembling for False Discovery Rates – Jenna Landy</title>
+<title>fdrSAFE: Selective Aggregation for Local False Discovery Rate Estimation – Jenna Landy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gridsemble: Selective Ensembling for False Discovery Rates</h1>
+<h1 class="title">fdrSAFE: Selective Aggregation for Local False Discovery Rate Estimation</h1>
   <div class="quarto-categories">
     <div class="quarto-category">multiple hypothesis testing</div>
     <div class="quarto-category">genomics</div>
@@ -170,8 +170,9 @@ gtag('config', 'G-XYB11TP0SE', { 'anonymize_ip': true});
 </header>
 
 
-<p><strong>Jenna M. Landy</strong>, and Giovanni Parmigiani. “Gridsemble: Selective Ensembling for False Discovery Rates.” <em>arXiv preprint <a href="https://arxiv.org/abs/2401.12865">arXiv:2401.12865</a></em> (2024).</p>
-<p>Gridsemble is a data-driven selective ensembling algorithm for estimating local (fdr) and tail-end (Fdr) false discovery rates in large-scale multiple hypothesis testing. Existing methods for estimating fdr often yield different conclusions, yet the unobservable nature of fdr values prevents the use of traditional model selection. Our method circumvents this challenge by ensembling a subset of methods with weights based on their estimated performances, which are computed on synthetic datasets generated to mimic the observed data while including ground truth. This paper is <a href="https://arxiv.org/abs/2401.12865">on arXiv</a> and is currently under review. The corresponding R software package is <a href="https://github.com/jennalandy/gridsemblefdr">on GitHub</a>.</p>
+<p><strong>Citation:</strong> <u>Jenna M. Landy</u> and Giovanni Parmigiani. “fdrSAFE: Selective Aggregation for Local False Discovery Rate Estimation.” <em>arXiv preprint <a href="https://arxiv.org/abs/2401.12865">arXiv:2401.12865</a></em> (2024).</p>
+<p><strong>R Software Package</strong>: <a href="https://github.com/jennalandy/fdrSAFE">fdrSAFE</a></p>
+<p>Estimating local false discovery rates (fdr) is central to large-scale multiple hypothesis testing, yet different methods often produce divergent results, and there is little guidance for selecting among them. Because ground truth hypothesis labels are unobservable, standard model selection cannot be used. We present fdrSAFE (selective aggregation for fdr estimation), a data-driven selective ensembling approach that estimates model performances on synthetic datasets designed to resemble the observed data but with known ground truth. With simulation studies and an experimental spike-in transcriptomic dataset, we show that fdrSAFE achieves robust near-optimality, performing well across diverse settings where baseline model performances vary. Along with improved fdr estimates, this framework enhances replicability by replacing arbitrary model choice with a principled, data-adaptive procedure. An open-source R software package is available on GitHub at <a href="https://github.com/jennalandy/fdrSAFE">jennalandy/fdrSAFE</a>.</p>
 <hr>
 <p>Advised by Giovanni Parmigiani, PhD<br>
 Department of Data Science, Dana Farber Cancer Institute<br>

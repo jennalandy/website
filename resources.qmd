@@ -1,5 +1,5 @@
 ---
-title: "Resources I've Helped Created"
+title: "Resources I've Helped Create"
 ---
 
 I believe that knowledge, especially knowledge that can advance a field as impactful as cancer genomics, should be as readily available and as free as open-source software. Below are tutorials and textbooks that I've made myself, contributed to, or edited.
